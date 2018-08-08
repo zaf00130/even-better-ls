@@ -1,0 +1,42 @@
+--- src/ls.c	2017-12-10 18:12:46.000000000 -0700
++++ src/ls.c	2018-07-01 01:14:31.133443086 -0600
+@@ -4753,21 +4753,15 @@
+         }
+     }
+ 
+-  /* Check the file's suffix only if still classified as C_FILE.  */
+-  ext = NULL;
+-  if (type == C_FILE)
++  /* Test if NAME has a recognized suffix.  */
++  len = strlen (name);
++  name += len;		/* Pointer to final \0.  */
++  for (ext = color_ext_list; ext != NULL; ext = ext->next)
+     {
+-      /* Test if NAME has a recognized suffix.  */
+-
+-      len = strlen (name);
+-      name += len;		/* Pointer to final \0.  */
+-      for (ext = color_ext_list; ext != NULL; ext = ext->next)
+-        {
+-          if (ext->ext.len <= len
+-              && STREQ_LEN (name - ext->ext.len, ext->ext.string,
+-                            ext->ext.len))
+-            break;
+-        }
++      if (ext->ext.len <= len
++          && STREQ_LEN (name - ext->ext.len, ext->ext.string,
++                        ext->ext.len))
++        break;
+     }
+ 
+   /* Adjust the color for orphaned symlinks.  */
+@@ -4826,6 +4820,9 @@
+   if (print_scontext)
+     len += 1 + (format == with_commas ? strlen (f->scontext) : scontext_width);
+ 
++  if (print_with_color)
++	len += 2;
++
+   len += quote_name_width (f->name, filename_quoting_options, f->quoted);
+ 
+   if (indicator_style != none)
