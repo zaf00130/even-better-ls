@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #wget https://raw.githubusercontent.com/illinoisjackson/even-better-ls/master/ls_colors_generator.py
 #chmod 755 ls_colors_generator.py
 #sudo mv ls_colors_generator.py /usr/bin/ls_colors_generator
