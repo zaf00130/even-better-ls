@@ -24,7 +24,26 @@ Side note: vdir and dir are also compiled during this process. Feel free to move
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/illinoisjackson/even-better-ls/master/install.sh)"
 ```
 
-Additionally, one should append the contents of [append_to_profile.sh](https://raw.githubusercontent.com/illinoisjackson/even-better-ls/master/append_to_profile.sh) to their corresponding profile file (.zshrc, .bashrc).
+Additionally, one should append the following to their corresponding profile file (.zshrc, .bashrc):
+
+```
+LS_COLORS=$(ls_colors_generator)
+
+run_ls() {
+	ls-i --color=auto -w $(tput cols) "$@"
+}
+
+run_dir() {
+	dir-i --color=auto -w $(tput cols) "$@"
+}
+
+run_vdir() {
+	vdir-i --color=auto -w $(tput cols) "$@"
+}
+alias ls="run_ls"
+alias dir="run_dir"
+alias vdir="run_vdir"
+```
 
 # Usage
 
