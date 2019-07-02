@@ -17,7 +17,7 @@
 #sudo mv dir /usr/bin/dir-i
 #sudo mv vdir /usr/bin/vdir-i
 
-COREUTILS_VER=8.29
+COREUTILS_VER=8.31
 
 #
 # Copy over the colors generator
