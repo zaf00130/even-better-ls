@@ -1,0 +1,92 @@
+--- src/ls.c	2019-07-02 15:25:28.721989400 +0200
++++ src/ls.c	2019-07-02 17:25:04.246050500 +0200
+@@ -1170,13 +1170,13 @@
+           int nbytes;
+ 
+           if (! pb[recent])
+-            nbytes = snprintf (nfmt, ABFORMAT_SIZE, "%s", fmt);
++            nbytes = snprintf (nfmt, ABFORMAT_SIZE, " %s ", fmt);
+           else
+             {
+               if (! (pb[recent] - fmt <= MIN (ABFORMAT_SIZE, INT_MAX)))
+                 return;
+               int prefix_len = pb[recent] - fmt;
+-              nbytes = snprintf (nfmt, ABFORMAT_SIZE, "%.*s%s%s",
++              nbytes = snprintf (nfmt, ABFORMAT_SIZE, " %.*s%s%s ",
+                                  prefix_len, fmt, abmon[i], pb[recent] + 2);
+             }
+ 
+@@ -2236,16 +2236,16 @@
+             {
+             case full_iso_time_style:
+               long_time_format[0] = long_time_format[1] =
+-                "%Y-%m-%d %H:%M:%S.%N %z";
++                " %Y-%m-%d %H:%M:%S.%N %z ";
+               break;
+ 
+             case long_iso_time_style:
+-              long_time_format[0] = long_time_format[1] = "%Y-%m-%d %H:%M";
++              long_time_format[0] = long_time_format[1] = " %Y-%m-%d %H:%M ";
+               break;
+ 
+             case iso_time_style:
+-              long_time_format[0] = "%Y-%m-%d ";
+-              long_time_format[1] = "%m-%d %H:%M";
++              long_time_format[0] = " %Y-%m-%d ";
++              long_time_format[1] = "%m-%d %H:%M ";
+               break;
+ 
+             case locale_time_style:
+@@ -3385,7 +3385,7 @@
+       if (format == long_format)
+         {
+           char b[INT_BUFSIZE_BOUND (uintmax_t)];
+-          int b_len = strlen (umaxtostr (f->stat.st_nlink, b));
++          int b_len = strlen (umaxtostr (f->stat.st_nlink, b)) + 1;
+           if (nlink_width < b_len)
+             nlink_width = b_len;
+ 
+@@ -3933,7 +3933,7 @@
+   if (name)
+     {
+       int width_gap = width - mbswidth (name, 0);
+-      int pad = MAX (0, width_gap);
++      int pad = MAX (0, width_gap) + 1;
+       fputs (name, stdout);
+       len = strlen (name) + pad;
+ 
+@@ -3943,7 +3943,7 @@
+     }
+   else
+     {
+-      printf ("%*lu ", width, id);
++      printf ("%*lu  ", width, id);
+       len = width;
+     }
+ 
+@@ -4071,7 +4071,7 @@
+   if (print_inode)
+     {
+       char hbuf[INT_BUFSIZE_BOUND (uintmax_t)];
+-      sprintf (p, "%*s ", inode_number_width,
++      sprintf (p, "%*s  ", inode_number_width,
+                format_inode (hbuf, sizeof hbuf, f));
+       /* Increment by strlen (p) here, rather than by inode_number_width + 1.
+          The latter is wrong when inode_number_width is zero.  */
+@@ -4098,7 +4098,7 @@
+      "optional alternate access method flag".  */
+   {
+     char hbuf[INT_BUFSIZE_BOUND (uintmax_t)];
+-    sprintf (p, "%s %*s ", modebuf, nlink_width,
++    sprintf (p, "%s %*s  ", modebuf, nlink_width,
+              ! f->stat_ok ? "?" : umaxtostr (f->stat.st_nlink, hbuf));
+   }
+   /* Increment by strlen (p) here, rather than by, e.g.,
+@@ -4961,6 +4961,7 @@
+ static void
+ indent (size_t from, size_t to)
+ {
++  to += 1;
+   while (from < to)
+     {
+       if (tabsize != 0 && to / tabsize > (from + 1) / tabsize)

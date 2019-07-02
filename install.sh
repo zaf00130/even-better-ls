@@ -21,6 +21,7 @@ tar -xf coreutils-${COREUTILS_VER}.tar.xz
 rm coreutils-${COREUTILS_VER}.tar.xz
 cd coreutils-${COREUTILS_VER}
 patch -p0 < ../ls.patch
+patch -p0 < ../ls-spacing.patch
 
 #
 # Compile and copy binaries
