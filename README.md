@@ -33,6 +33,12 @@ alias dir="run_dir"
 alias vdir="run_vdir"
 ```
 
+To install only `ls_colors_generator.py` and skip downloading and compiling the core utilities, use the `--script-only` option. This is useful if you have customized the colors and icons after install and wish to quickly update without going through the whole installation process again.
+
+```
+$ ./install.sh --script-only && LS_COLORS=$(ls_colors_generator) 
+```
+
 # Usage
 
 In order to change the icons and colors displayed, you can edit the `ls_colors_generator.py` before running the installation script.
