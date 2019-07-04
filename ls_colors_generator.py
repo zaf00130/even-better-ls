@@ -843,23 +843,52 @@ def get_colors():
   return FORMAT_COLORS, SPECIAL, EXTENSION_LIST
 
 # Formats arguments into an LS_COLORS-complete escape sequence.
-def color_char(f,b,c,other=""):
-  return "m%s\x1b" % ("%s%s " % (color_seq(f,b,other),get_unicode(c)))
+def color_char(f, b, c, other = ""):
+  return "m%s\x1b" % ("%s%s " % (color_seq(f, b, other), get_unicode(c)))
 
 cc = color_char
 
 # Formats fg and bg into an escape sequence.
-def color_seq(f,b,other):
-  if b != -1:
-    if other != "":
-      return "\x1b[38;5;%i;48;5;%i;%sm" % (f, b, other)
-    else:
-      return "\x1b[38;5;%i;48;5;%im" % (f, b)
+def color_seq(f, b, other = ""):
+  if isinstance(f, str):
+    f = color_output_rgb(f)
   else:
-    if other != "":
-      return "\x1b[38;5;%i;%sm" % (f, other)
-    else:
-      return "\x1b[38;5;%im" % f
+    f = color_output(f)
+
+  if isinstance(b, str):
+    b = color_output_rgb(b, True)
+  else:
+    b = color_output(b, True)
+
+  if (f != "" and b != ""):
+    f += ";"
+
+  if (other != ""):
+    other += ";"
+
+  return "\x1b[%s%s%sm" % (other, f, b)
+
+# Formats a 256-color code into a fg or bg value
+def color_output(c, bg = False):
+  if (c == -1):
+    return ""
+  if (bg):
+    return "48;5;%i" % c
+  else:
+    return "38;5;%i" % c
+
+# Formats a hex color into a fg or bg value
+def color_output_rgb(hex, bg = False):
+  r, g, b = hex_to_rgb(hex)
+  if (bg):
+    return "48;2;%i;%i;%i" % (r, g, b)
+  else:
+    return "38;2;%i;%i;%i" % (r, g, b)
+
+# Convert hex color to rgb values
+def hex_to_rgb(hex):
+  hex = hex.lstrip('#')
+  return tuple(int(hex[i:i+2], 16) for i in (0, 2, 4))
 
 # Return a unicode character. Python 2 and 3 complete.
 def get_unicode(ch):

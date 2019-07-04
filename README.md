@@ -8,9 +8,9 @@ This is a modified version of [even-better-ls](https://github.com/mnurzia/even-b
 
 Works by installing modified versions of `ls`, `dir` and `vdir`, and customizing the value of `$LS_COLORS`.
 
-- Almost full stock extension set
-- 256 color palette (expandable)
-- Support for a wide variety of characters from [nerd-fonts](http://www.github.com/ryanoasis/nerd-fonts)
+- Wide set of file extensions covered
+- Supports 256 color palette as well as 24-bit color (16+ million colors)
+- Wide variety of character glyphs from [nerd-fonts](http://www.github.com/ryanoasis/nerd-fonts) (install separately)
 
 # Installation
 
@@ -58,7 +58,22 @@ Corresponding values:
 
 It's also possible to use the `ord()` function to display a single non-wide unicode character:
 
-```".pot": cc(7,   -1,  ord("P")),```
+```".pot": cc(7, -1, ord("P")),```
+
+A value of `-1` means that no color is specified and will instead fall back on the default foreground or background color.
+
+Additionally, it is possible to skip the icon and simply supply a standard color sequence, as expected by the system, if that for some reason is something you wish to do.
+
+```
+FILE:       "38;5;2",
+DIRECTORY:  "38;2;255;255;255;48;2;0;0;255",
+```
+
+## True Color
+
+24-bit colors are supported through the use of hex color codes instead of the regular 256 color codes. This requires a terminal with support for True Color.
+
+```".md": cc("#FFFFFF", "#444444",  0xE60E),```
 
 ## Testing
 
