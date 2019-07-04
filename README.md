@@ -59,3 +59,11 @@ Corresponding values:
 It's also possible to use the `ord()` function to display a single non-wide unicode character:
 
 ```".pot": cc(7,   -1,  ord("P")),```
+
+## Testing
+
+The following command will create a folder named `ebls-ext-test` in the current directory, with examples of all file extensions defined in `ls_colors_generator.py`:
+
+```
+$ ls_colors_generator test
+```

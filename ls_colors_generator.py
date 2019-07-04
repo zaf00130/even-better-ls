@@ -900,8 +900,8 @@ if __name__ == "__main__":
   formcol, special, exten = get_colors()
   try:
     if sys.argv[1] == "test": # generate a test directory with all file extensions
-      os.system("mkdir test")
-      os.system("touch" + " ".join("test/" + ext for ext in exten.keys()))
+      os.system("mkdir -p ebls-ext-test")
+      os.system("touch " + " ".join("ebls-ext-test/" + ext for ext in exten.keys()))
       sys.exit()
   except:
     pass
