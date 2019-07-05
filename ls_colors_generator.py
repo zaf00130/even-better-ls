@@ -854,18 +854,16 @@ def color_seq(f, b, other = ""):
     f = color_output_rgb(f)
   else:
     f = color_output(f)
-
   if isinstance(b, str):
     b = color_output_rgb(b, True)
   else:
     b = color_output(b, True)
-
   if (f != "" and b != ""):
     f += ";"
-
-  if (other != ""):
+  other = list(other)
+  other = ";".join(other)
+  if (other != "" and (f != "" or b != "")):
     other += ";"
-
   return "\x1b[%s%s%sm" % (other, f, b)
 
 # Formats a 256-color code into a fg or bg value
