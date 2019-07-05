@@ -842,6 +842,9 @@ def get_colors():
 
 # Formats arguments into an LS_COLORS-complete escape sequence.
 def color_char(char, clr1, clr2 = []):
+  ch_str = get_unicode(char)
+  if extra_space:
+    ch_str = ch_str + " "
   f1, b1, f2, b2 = -1, -1, -1, -1
   o1, o2 = "", "";
   if len(clr1) == 3:
@@ -853,9 +856,9 @@ def color_char(char, clr1, clr2 = []):
   elif clr2:
     f2, b2 = clr2
   if (clr2):
-    return "m%s\x1b" % ("%s%s \x1b[0m%s" % (color_seq(f1, b1, str(o1)), get_unicode(char), color_seq(f2, b2, str(o2))))
+    return "m%s\x1b" % ("%s%s \x1b[0m%s" % (color_seq(f1, b1, str(o1)), ch_str, color_seq(f2, b2, str(o2))))
   else:
-    return "m%s\x1b" % ("%s%s " % (color_seq(f1, b1, str(o1)), get_unicode(char)))
+    return "m%s\x1b" % ("%s%s " % (color_seq(f1, b1, str(o1)), ch_str))
 
 cc = color_char
 
@@ -934,6 +937,12 @@ STOTHERWRITE  =  "tw"
 if __name__ == "__main__":
   import sys
   import os
+  extra_space = False
+  try:
+    if sys.argv[1] == "--extra-space":
+      extra_space = True
+  except:
+    pass
   lsc = ""
   formcol, special, exten = get_colors()
   try:
