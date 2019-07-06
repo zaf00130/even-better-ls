@@ -1,6 +1,16 @@
 --- src/ls.c	2019-02-19 05:00:02.000000000 +0100
-+++ src/ls.c	2019-07-02 14:42:03.826779900 +0200
-@@ -4758,21 +4758,16 @@
++++ src/ls.c	2019-07-06 16:13:10.664799500 +0200
+@@ -2141,7 +2141,8 @@
+                                 && (line_length || format == long_format)
+                                 && (qs == shell_quoting_style
+                                     || qs == shell_escape_quoting_style
+-                                    || qs == c_maybe_quoting_style);
++                                    || qs == c_maybe_quoting_style)
++                                && !print_with_color;                       
+   filename_quoting_options = clone_quoting_options (NULL);
+   if (qs == escape_quoting_style)
+     set_char_quoting (filename_quoting_options, ' ', 1);
+@@ -4758,22 +4759,17 @@
          }
      }
  
@@ -9,7 +19,7 @@
 -  if (type == C_FILE)
 -    {
 -      /* Test if NAME has a recognized suffix.  */
-+  /* Test if NAME has a recognized suffix.  */
++    /* Test if NAME has a recognized suffix.  */
  
 -      len = strlen (name);
 -      name += len;		/* Pointer to final \0.  */
@@ -20,23 +30,25 @@
 -                                ext->ext.len) == 0)
 -            break;
 -        }
-+  len = strlen (name);
-+  name += len;		/* Pointer to final \0.  */
-+  for (ext = color_ext_list; ext != NULL; ext = ext->next)
-+    {
-+      if (ext->ext.len <= len
-+          && c_strncasecmp (name - ext->ext.len, ext->ext.string,
-+                            ext->ext.len) == 0)
-+        break;
-     }
+-    }
++    len = strlen (name);
++    name += len;		/* Pointer to final \0.  */
++    for (ext = color_ext_list; ext != NULL; ext = ext->next)
++      {
++        if (ext->ext.len <= len
++            && c_strncasecmp (name - ext->ext.len, ext->ext.string,
++                              ext->ext.len) == 0)
++          break;
++      }
  
    /* Adjust the color for orphaned symlinks.  */
-@@ -4831,6 +4826,9 @@
+   if (type == C_LINK && !linkok)
+@@ -4831,6 +4827,9 @@
    if (print_scontext)
      len += 1 + (format == with_commas ? strlen (f->scontext) : scontext_width);
  
 +  if (print_with_color)
-+      len += 2;
++    len += 2;
 +
    len += quote_name_width (f->name, filename_quoting_options, f->quoted);
  
