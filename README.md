@@ -33,7 +33,7 @@ alias dir="run_dir"
 alias vdir="run_vdir"
 ```
 
-If your wish to output an extra space between the icon and the filename, change the line `LS_COLORS=$(ls_colors_generator)` to `LS_COLORS=$(ls_colors_generator --extra-space)`.
+If your wish to output an extra space between the icon and the filename, change the line `LS_COLORS=$(ls_colors_generator)` to `LS_COLORS=$(ls_colors_generator --extra-space)`. Note that in such case the same option should be given to the new binaries, e.g: `ls-i --color=auto --extra-space -w $(tput cols) "$@"`) to prevent line overflow.
 
 To install only `ls_colors_generator.py` and skip downloading and compiling the core utilities, use the `--script-only` option. This is useful if you have customized the colors and icons after install and wish to quickly update without going through the whole installation process again.
 

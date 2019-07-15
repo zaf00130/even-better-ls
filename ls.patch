@@ -1,6 +1,46 @@
 --- src/ls.c	2019-02-19 05:00:02.000000000 +0100
-+++ src/ls.c	2019-07-06 16:13:10.664799500 +0200
-@@ -2141,7 +2141,8 @@
++++ src/ls.c	2019-07-15 02:45:27.976604800 +0200
+@@ -667,6 +667,10 @@
+ 
+ static bool directories_first;
+ 
++/* True means one extra space given to filename. Only applies when output is colorized. */
++
++static bool extra_space;
++
+ /* Which files to ignore.  */
+ 
+ static enum
+@@ -833,7 +837,8 @@
+   SI_OPTION,
+   SORT_OPTION,
+   TIME_OPTION,
+-  TIME_STYLE_OPTION
++  TIME_STYLE_OPTION,
++  EXTRASPACE_OPTION
+ };
+ 
+ static struct option const long_options[] =
+@@ -881,6 +886,7 @@
+   {"block-size", required_argument, NULL, BLOCK_SIZE_OPTION},
+   {"context", no_argument, 0, 'Z'},
+   {"author", no_argument, NULL, AUTHOR_OPTION},
++  {"extra-space", no_argument, NULL, EXTRASPACE_OPTION},
+   {GETOPT_HELP_OPTION_DECL},
+   {GETOPT_VERSION_OPTION_DECL},
+   {NULL, 0, NULL, 0}
+@@ -2103,6 +2109,10 @@
+           print_scontext = true;
+           break;
+ 
++        case EXTRASPACE_OPTION:
++          extra_space = true;
++          break;
++
+         case_GETOPT_HELP_CHAR;
+ 
+         case_GETOPT_VERSION_CHAR (PROGRAM_NAME, AUTHORS);
+@@ -2141,7 +2151,8 @@
                                  && (line_length || format == long_format)
                                  && (qs == shell_quoting_style
                                      || qs == shell_escape_quoting_style
@@ -10,7 +50,7 @@
    filename_quoting_options = clone_quoting_options (NULL);
    if (qs == escape_quoting_style)
      set_char_quoting (filename_quoting_options, ' ', 1);
-@@ -4758,22 +4759,17 @@
+@@ -4758,22 +4769,17 @@
          }
      }
  
@@ -43,13 +83,28 @@
  
    /* Adjust the color for orphaned symlinks.  */
    if (type == C_LINK && !linkok)
-@@ -4831,6 +4827,9 @@
+@@ -4831,6 +4837,12 @@
    if (print_scontext)
      len += 1 + (format == with_commas ? strlen (f->scontext) : scontext_width);
  
-+  if (print_with_color)
++  if (print_with_color) {
 +    len += 2;
++    if (extra_space)
++      len += 1;
++  }
 +
    len += quote_name_width (f->name, filename_quoting_options, f->quoted);
  
    if (indicator_style != none)
+@@ -5279,6 +5291,11 @@
+   -1                         list one file per line.  Avoid '\\n' with -q or -b\
+ \n\
+ "), stdout);
++      fputs (_("\
++      --extra-space\n\
++                             allocate an extra space to the filename;\n\
++                               works in conjunction with color output only\n\
++"), stdout);
+       fputs (HELP_OPTION_DESCRIPTION, stdout);
+       fputs (VERSION_OPTION_DESCRIPTION, stdout);
+       emit_size_note ();
