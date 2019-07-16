@@ -1137,7 +1137,14 @@ def color_char(char, clr1, clr2 = []):
     f2, b2, o2 = clr2
   elif clr2:
     f2, b2 = clr2
-  if (clr2):
+
+  if no_icons: # No icon mode
+    if clr2:
+      # If text color specified, use only that
+      return "m%s\x1b" % ("%s " % (color_seq(f2, b2, str(o2))))
+    else:
+      return "m%s\x1b" % ("%s " % (color_seq(f1, b1, str(o1))))
+  elif clr2:
     return "m%s\x1b" % ("%s%s \x1b[0m%s" % (color_seq(f1, b1, str(o1)), ch_str, color_seq(f2, b2, str(o2))))
   else:
     return "m%s\x1b" % ("%s%s " % (color_seq(f1, b1, str(o1)), ch_str))
@@ -1181,7 +1188,7 @@ def color_output_rgb(hex, bg = False):
 
 # Convert hex color to rgb values
 def hex_to_rgb(hex):
-  hex = hex.lstrip('#')
+  hex = hex.lstrip("#")
   return tuple(int(hex[i:i+2], 16) for i in (0, 2, 4))
 
 # Return a unicode character. Python 2 and 3 complete.
@@ -1272,32 +1279,35 @@ if __name__ == "__main__":
   user_home = os.path.expanduser("~")
   cache_dir = user_home + "/.cache/even-better-ls/"
   config_dir = user_home + "/.config/even-better-ls/"
+  no_icons = False
 
   # Options
   try:
-    opts, args = getopt.getopt(sys.argv[1:], 'o:et', ['override=', 'extra-space', 'test'])
+    opts, args = getopt.getopt(sys.argv[1:], "o:etn", ["override=", "extra-space", "test", "no-icon"])
   except getopt.GetoptError:
     pass
 
   # Handle options
   for opt, arg in opts:
-    if opt in ('-t', '--test'): # Test extensions
+    if opt in ("-t", "--test"): # Test extensions
       run_test = True
-    if opt in ('-o', '--override'): # Override icon and colors
+    if opt in ("-o", "--override"): # Override icon and colors
       if os.path.isfile(arg):
         override = arg
       else:
         print("Specified override path is invalid")
         sys.exit(-1)
-    if opt in ('-e', '--extra-space'): # Add extra space between icon and filename
+    if opt in ("-e", "--extra-space"): # Add extra space between icon and filename
       extra_space = True
+    if opt in ("-n", "--no-icon"): # Do not output icons
+      no_icons = True
 
   # Look for default override file in ~/.config/ if no other specified
   if not override and os.path.isfile(config_dir + "override.yaml"):
     override = config_dir + "override.yaml";
 
   # Attempt to load cache first
-  cache_hash = get_hash(path, str(override), str(extra_space))
+  cache_hash = get_hash(path, str(override), (str(extra_space) + str(no_icons)) )
   cache = get_cache(cache_hash, path, override, cache_dir)
   if (cache):
     try:
@@ -1308,7 +1318,7 @@ if __name__ == "__main__":
 
   # Load external override file
   if override:
-    with open(override, 'r') as stream:
+    with open(override, "r") as stream:
       try:
         override = yaml.safe_load(stream)
       except yaml.YAMLError as exc:
