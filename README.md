@@ -63,17 +63,25 @@ Note that in such case the same option should be given to the new binaries, e.g:
 
 To install only `ls_colors_generator.py` and skip downloading and compiling the core utilities, use the `--script-only` option. This is useful if you have customized the colors and icons after install and wish to quickly update without going through the whole installation process again.
 
-```
+```bash
 $ ./install.sh --script-only && LS_COLORS=$(ls_colors_generator)
 ```
 
-## Usage
+### Issues
+
+Be aware that _even-better-ls_ does not work well with `zsh`'s tab completion. One simple workaround is to use the `-n` or `--no-icon` option to output color data _without icons_ and set the resulting output to be used for completion. This will allow you to at least retain the colors defined in the script.
+
+```bash
+zstyle ':completion:*:default' list-colors ${(s.:.)$(ls_colors_generator -n)}
+```
+
+## Customization
 
 In order to change the icons and colors displayed, you can edit the `ls_colors_generator.py` before running the installation script, or create an override config file as describe above.
 
 For the icons, see the [Nerd Fonts cheat sheet](http://nerdfonts.com/#cheat-sheet) (requires a compatible font installed). Emoji can be used but it is a much more sparse library than the full set of icons that nerd-fonts provides
 
-In `ls_colors_generator.py` extension colors and characters correspond to their appropriate extension in the `EXTENSIONS` dict in the `get_colors()` function. For example, consider this line:
+In `ls_colors_generator.py` extension colors and characters correspond to their appropriate extension in the `EXTENSIONS` dictionary in the `get_colors()` function. For example, consider this line:
 
 ```python
 ".err": [ 0xF12A, [16, 160] ],
@@ -85,7 +93,7 @@ A color value of `-1` would mean that no color is specified and will instead fal
 
 ### Splitting Colors
 
-If you wish to set different colors for the icon and the filename, just add a another list argument to the function call.
+If you wish to set different colors for the icon and the filename, just add a another color list to the entry.
 
 ```python
 ".err": [ 0xF12A, [16, 160], [16, -1] ],
@@ -93,9 +101,11 @@ If you wish to set different colors for the icon and the filename, just add a an
 
 The filename will now be displayed as foreground color 16 with no applied background color while the icon will be unchanged from the previous settings.
 
+When using the `--no-icon` option the second color list (if defined) will override the first list, as only one color set can be used in that setting.
+
 ### Special Attributes
 
-There's a special attribute of the displayed character and text, which is defined in the third optional argument inside the color lists.
+There's a special attribute of the displayed character and text, which is defined in the third optional piece of data inside the color lists.
 
 ```python
 ".err": [ 0xF12A, [16, 160, "4"] ],
