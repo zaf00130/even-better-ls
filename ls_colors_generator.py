@@ -1204,6 +1204,35 @@ def translate(color_list):
       color_list[k] = color
   return color_list
 
+# Generate hash for cache file name
+def get_hash(f_path, o_path, extra):
+  return hashlib.md5((f_path + o_path + extra).encode()).hexdigest()
+
+# Get cached generated color output if available and newer than the source files
+def get_cache(c_hash, f_path, o_path, c_dir):
+  f_time = os.path.getmtime(f_path)
+  if o_path and os.path.isfile(o_path):
+    o_time = os.path.getmtime(o_path)
+    if o_time > f_time:
+      f_time = o_time
+  if os.path.isfile(c_dir + c_hash) and f_time < os.path.getmtime(c_dir + c_hash):
+    try:
+      f = open(c_dir + c_hash, "r")
+      return f.read()
+    except:
+      return False
+  else:
+    return False
+
+# Write output to cache file
+def set_cache(output, c_dir, c_hash):
+  if not os.path.exists(c_dir):
+    os.makedirs(c_dir)
+  if os.path.exists(c_dir + c_hash):
+    os.remove(c_dir + c_hash)
+  f = open(c_dir + c_hash, "w+")
+  f.write(output)
+
 
 LEFT   =  "lc"
 RIGHT  =  "rc"
@@ -1232,13 +1261,17 @@ CAPABILITIES  =  "ca"
 MULTIHARDLINK =  "mh"
 
 if __name__ == "__main__":
-  import sys, os, getopt, yaml
+  import sys, os, getopt, yaml, hashlib
   lsc = ""
   formcol, special, exten = get_colors()
   opts = []
   extra_space = False
   override = False
   run_test = False
+  path = os.path.abspath(__file__)
+  user_home = os.path.expanduser("~")
+  cache_dir = user_home + "/.cache/even-better-ls/"
+  config_dir = user_home + "/.config/even-better-ls/"
 
   # Options
   try:
@@ -1253,12 +1286,25 @@ if __name__ == "__main__":
     if opt in ('-o', '--override'): # Override icon and colors
       if os.path.isfile(arg):
         override = arg
+      else:
+        print("Specified override path is invalid")
+        sys.exit(-1)
     if opt in ('-e', '--extra-space'): # Add extra space between icon and filename
       extra_space = True
 
   # Look for default override file in ~/.config/ if no other specified
-  if not override and os.path.isfile(os.path.expanduser("~") + "/.config/even-better-ls/override.yaml"):
-    override = os.path.expanduser("~") + "/.config/even-better-ls/override.yaml";
+  if not override and os.path.isfile(config_dir + "override.yaml"):
+    override = config_dir + "override.yaml";
+
+  # Attempt to load cache first
+  cache_hash = get_hash(path, str(override), str(extra_space))
+  cache = get_cache(cache_hash, path, override, cache_dir)
+  if (cache):
+    try:
+      sys.stdout.buffer.write(cache) # Python 3
+    except:
+      print(cache) # Python 2
+    sys.exit()
 
   # Load external override file
   if override:
@@ -1267,6 +1313,7 @@ if __name__ == "__main__":
         override = yaml.safe_load(stream)
       except yaml.YAMLError as exc:
         print(exc)
+        sys.exit(-1)
 
   # Add override data
   if isinstance(override, dict) and "SPECIAL" in override:
@@ -1310,7 +1357,13 @@ if __name__ == "__main__":
         lsc += compname + "=" + comp + ":"
       else:
         lsc += "*." + compname.lstrip("*.") + "=" + comp + ":"
+  output = lsc.encode("utf-8")
+
+  # Save output to cache file
+  set_cache(output, cache_dir, cache_hash)
+
   try:
-    sys.stdout.buffer.write(lsc.encode('utf-8'))
+    sys.stdout.buffer.write(output) # Python 3
   except:
-    print(lsc.encode('utf-8')) # python2
+    print(output) # Python 2
+
