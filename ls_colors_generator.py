@@ -11,12 +11,15 @@ def get_colors():
     RESET:   "\x1b[0m"   # Sequence to print *after* the command executes. (functionally identical)
   }
 
-  # The color_char(fg, bg, char, other) function takes arguments and formats them into a valid
-  # LS_COLORS format specifier. FG denotes foreground (it is required). BG denotes background;
-  # in order to disable the background set it to -1. The char argument is the character code for
-  # the character that must be printed before the filename in ls. The "other" argument denotes
-  # any escape codes to print after the main fg/bg sequence (e.g. bold, italic formatters).
-  # ^^cc is an alias for color_char.
+  # Each entry should be a list with either two or three pieces of data (character, color list 1, color list 2).
+  # The first is the character code for the character that will be printed before the filename in ls.
+  # The colors are expected to be lists, each containing at least a foreground and a background color,
+  # with an optional third entry denoting any special formatting to be applied to the string (e.g. bold,
+  # italic, underline, etc.)
+  # Color list 2 is optional but if defined will apply only to the file name, leaving list 1 to apply to
+  # the icon. If list 2 is not defined list 1 will be used for both.
+  # Each color inside the color lists can be either a color code (0-255) or a full-size hex color code
+  # (e.g. "#ffffff").
   SPECIAL = {
     NORMAL:                       "",                                            #    Should be left blank. Used as a fallback for everything else.
     FILE:                         [ 0xF016,   [-1,   -1] ],                      #   Normal file, or one that does not have a color associated with it.
@@ -470,7 +473,6 @@ def get_colors():
     ".gif":                       [ 0xF1C5,   [157, -1] ],                       # 
     ".ico":                       [ 0xF1C5,   [157, -1] ],                       # 
     ".jpeg":                      [ 0xF1C5,   [157, -1] ],                       # 
-    ".JPG":                       [ 0xF1C5,   [157, -1] ],                       # 
     ".jpg":                       [ 0xF1C5,   [157, -1] ],                       # 
     ".mng":                       [ 0xF1C5,   [157, -1] ],                       # 
     ".nth":                       [ 0xF1C5,   [157, -1] ],                       # 
@@ -1148,8 +1150,6 @@ def color_char(char, clr1, clr2 = []):
     return "m%s\x1b" % ("%s%s \x1b[0m%s" % (color_seq(f1, b1, str(o1)), ch_str, color_seq(f2, b2, str(o2))))
   else:
     return "m%s\x1b" % ("%s%s " % (color_seq(f1, b1, str(o1)), ch_str))
-
-cc = color_char
 
 # Formats fg and bg into an escape sequence.
 def color_seq(f, b, other = ""):
