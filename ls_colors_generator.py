@@ -1233,12 +1233,16 @@ def get_cache(c_hash, f_path, o_path, c_dir):
 
 # Write output to cache file
 def set_cache(output, c_dir, c_hash):
-  if not os.path.exists(c_dir):
-    os.makedirs(c_dir)
-  if os.path.exists(c_dir + c_hash):
-    os.remove(c_dir + c_hash)
-  f = open(c_dir + c_hash, "w+")
-  f.write(output)
+  try:
+    if not os.path.exists(c_dir):
+      os.makedirs(c_dir)
+    if os.path.exists(c_dir + c_hash):
+      os.remove(c_dir + c_hash)
+    f = open(c_dir + c_hash, "wb+")
+    f.write(output)
+  except:
+    print("Could not write to cache")
+    sys.exit(-1)
 
 
 LEFT   =  "lc"
