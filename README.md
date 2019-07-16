@@ -1,21 +1,29 @@
 # even-better-ls
 
-![visual depiction of even-better-ls](http://imgur.com/H0sLGFX.png)
+![visual depiction of even-better-ls](https://i.imgur.com/rNFjt5t.png)
 
 ## Features
 
-This is a modified version of [even-better-ls](https://github.com/mnurzia/even-better-ls).
+This is a heavily modified version of [even-better-ls](https://github.com/mnurzia/even-better-ls).
 
 Works by installing modified versions of `ls`, `dir` and `vdir`, and customizing the value of `$LS_COLORS`.
 
 - Wide set of file extensions covered
 - Supports 256 color palette as well as 24-bit color (16+ million colors)
 - Wide variety of character glyphs from [nerd-fonts](http://www.github.com/ryanoasis/nerd-fonts) (install separately)
+- Override colors on a per-user basis.
 
-# Installation
+## Installation
+
+If you are using a Python version less than 3, you may have to install `PyYAML`.
+```
+$ pip install pyyaml
+```
+
+To install _even-better-ls_, clone this repository and run the installation script:
 
 ```
-$  git clone git@github.com:shiftydev/even-better-ls.git && cd even-better-ls && ./install.sh
+$ git clone git@github.com:shiftydev/even-better-ls.git && cd even-better-ls && ./install.sh
 ```
 
 You can safely delete the `even-better-ls` directory after installation.
@@ -25,54 +33,72 @@ Additionally, one should append the following to their corresponding shell profi
 ```bash
 LS_COLORS=$(ls_colors_generator)
 
-run_ls() { ls-i --color=auto -w $(tput cols) "$@" }
-run_dir() { dir-i --color=auto -w $(tput cols) "$@" }
-run_vdir() { vdir-i --color=auto -w $(tput cols) "$@" }
-alias ls="run_ls"
-alias dir="run_dir"
-alias vdir="run_vdir"
+clr_ls() { ls-i --color=auto -w $(tput cols) "$@" }
+clr_dir() { dir-i --color=auto -w $(tput cols) "$@" }
+clr_vdir() { vdir-i --color=auto -w $(tput cols) "$@" }
+alias ls="clr_ls"
+alias dir="clr_dir"
+alias vdir="clr_vdir"
 ```
 
-If your wish to output an extra space between the icon and the filename, change the line `LS_COLORS=$(ls_colors_generator)` to `LS_COLORS=$(ls_colors_generator --extra-space)`. Note that in such case the same option should be given to the new binaries, e.g: `ls-i --color=auto --extra-space -w $(tput cols) "$@"`) to prevent line overflow.
+### Override
+
+Beyond simply editing `ls_colors_generator.py`, it's possible to provide a YAML config file to override any color settings defined in the script. See the included `override.yaml` file for a working example. By default such a file will be looked for in `~/.config/even-better-ls/override.yaml`, but it's possible to define a custom location with the `-o` or `--override` option.
+
+```bash
+LS_COLORS=$(ls_colors_generator -o ~/my-override.yaml)
+```
+
+### Other
+
+If your wish to output an extra space between the icon and the filename, use the `-e` or `--extra-space` option.
+
+```bash
+LS_COLORS=$(ls_colors_generator --extra-space)
+```
+
+Note that in such case the same option should be given to the new binaries, e.g: `ls-i --color=auto --extra-space -w $(tput cols) "$@"`) to prevent line overflow.
+
+---
 
 To install only `ls_colors_generator.py` and skip downloading and compiling the core utilities, use the `--script-only` option. This is useful if you have customized the colors and icons after install and wish to quickly update without going through the whole installation process again.
 
 ```
-$ ./install.sh --script-only && LS_COLORS=$(ls_colors_generator) 
+$ ./install.sh --script-only && LS_COLORS=$(ls_colors_generator)
 ```
 
-# Usage
+## Usage
 
-In order to change the icons and colors displayed, you can edit the `ls_colors_generator.py` before running the installation script.
+In order to change the icons and colors displayed, you can edit the `ls_colors_generator.py` before running the installation script, or create an override config file as describe above.
 
-The script relies on trapd00r's [LS_COLORS script](https://github.com/trapd00r/LS_COLORS). For the icons, it uses ryanoasis' [nerd-fonts](http://www.github.com/ryanoasis/nerd-fonts) and [devicons-shell](http://www.github.com/ryanoasis/devicons-shell). Emoji can be used but it is a much more sparse library than the full set of icons that nerd-fonts provides
+For the icons, see the [Nerd Fonts cheat sheet](http://nerdfonts.com/#cheat-sheet) (requires a compatible font installed). Emoji can be used but it is a much more sparse library than the full set of icons that nerd-fonts provides
 
 In `ls_colors_generator.py` extension colors and characters correspond to their appropriate extension in the `EXTENSIONS` dict in the `get_colors()` function. For example, consider this line:
 
 ```python
-".err": cc(0xF12A, [16, 160]),
+".err": [ 0xF12A, [16, 160] ],
 ```
 
-It associates the extension "`.err`" with the foreground color 160 and the background color 16. It sets its character to the Unicode codepoint located at `0xF12A`, which in this case is the Font Awesome exclamation point.
+It associates the extension "`.err`" with the foreground color 16 and the background color 160. It sets its character to the Unicode codepoint located at `0xF12A`, which in this case is the Font Awesome exclamation point.
 
-A color value of `-1` means that no color is specified and will instead fall back on the default foreground or background color.
+A color value of `-1` would mean that no color is specified and will instead fall back on the default foreground or background color.
 
-## Splitting Colors
+### Splitting Colors
 
 If you wish to set different colors for the icon and the filename, just add a another list argument to the function call.
 
 ```python
-".err": cc(0xF12A, [16, 160], [16, -1]),
+".err": [ 0xF12A, [16, 160], [16, -1] ],
 ```
 
 The filename will now be displayed as foreground color 16 with no applied background color while the icon will be unchanged from the previous settings.
 
-## Special Attributes
+### Special Attributes
 
 There's a special attribute of the displayed character and text, which is defined in the third optional argument inside the color lists.
 
 ```python
-".err": cc(0xF12A, [16, 160, "4"]),
+".err": [ 0xF12A, [16, 160, "4"] ],
 ```
 
 The above example would have the entire entry underscored.
@@ -80,7 +106,7 @@ The above example would have the entire entry underscored.
 Just like colors you can set different values for icon and filename. Example with just the filename underscored:
 
 ```python
-".err": cc(0xF12A, [16, 160], [16, 160, "4"]),
+".err": [ 0xF12A, [16, 160], [16, 160, "4"] ],
 ```
 
 Corresponding values:
@@ -97,23 +123,23 @@ Corresponding values:
 These special attributes can be combined. For example, to make an an entry both bold and underscored, set the value to `"14"`.
 
 ```python
-".err": cc(0xF12A, [16, 160, "14"]),
+".err": [ 0xF12A, [16, 160, "14"] ],
 ```
 
-## True Color
+### True Color
 
 24-bit colors are supported through the use of full-length hex color codes (7 characters including hash) instead of the regular 256 color codes. This requires a terminal with support for True Color.
 
 ```python
-".err": cc(0xF12A, ["#FF0000", -1], ["#FFFFFF", "FF0000"]),
+".err": [ 0xF12A, ["#FF0000", -1], ["#FFFFFF", "FF0000"] ],
 ```
 
-## Misc
+### Misc
 
-It's also possible to use the `ord()` function to display a single non-wide unicode character:
+It's also possible to use the a __single-character__ string to display a non-wide unicode character:
 
 ```python
-".pot": cc(ord("P"),  [7, -1]),
+".pot": [ "P",  [7, -1] ],
 ```
 
 Additionally, it is possible to skip the icon and simply supply a standard color sequence, as expected by the system, if that for some reason is something you wish to do.
@@ -125,8 +151,8 @@ DIRECTORY:  "38;2;255;255;255;48;2;0;0;255",
 
 ## Testing
 
-The following command will create a folder named `ebls-ext-test` in the current directory, with examples of all file extensions defined in `ls_colors_generator.py`:
+You can test current colors and icons with the `-t` or `--test` option. This will create a folder named `ebls-ext-test` in the current directory, with examples of all defined file extensions.
 
 ```
-$ ls_colors_generator test
+$ ls_colors_generator --test
 ```
