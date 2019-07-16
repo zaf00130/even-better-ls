@@ -1142,14 +1142,14 @@ def color_char(char, clr1, clr2 = []):
 
   if no_icons: # No icon mode
     if clr2:
-      # If text color specified, use only that
-      return "m%s\x1b" % ("%s " % (color_seq(f2, b2, str(o2))))
+      # If filename color was specified, use that instead
+      return color_seq(f2, b2, str(o2))
     else:
-      return "m%s\x1b" % ("%s " % (color_seq(f1, b1, str(o1))))
+      return color_seq(f1, b1, str(o1))
   elif clr2:
-    return "m%s\x1b" % ("%s%s \x1b[0m%s" % (color_seq(f1, b1, str(o1)), ch_str, color_seq(f2, b2, str(o2))))
+    return "%sm%s \x1b[m\x1b[%s" % (color_seq(f1, b1, str(o1)), ch_str, color_seq(f2, b2, str(o2)))
   else:
-    return "m%s\x1b" % ("%s%s " % (color_seq(f1, b1, str(o1)), ch_str))
+    return "%sm%s \x1b" % (color_seq(f1, b1, str(o1)), ch_str)
 
 # Formats fg and bg into an escape sequence.
 def color_seq(f, b, other = ""):
@@ -1167,7 +1167,7 @@ def color_seq(f, b, other = ""):
   other = ";".join(other)
   if (other != "" and (f != "" or b != "")):
     other += ";"
-  return "\x1b[%s%s%sm" % (other, f, b)
+  return "%s%s%s" % (other, f, b)
 
 # Formats a 256-color code into a fg or bg value
 def color_output(c, bg = False):
