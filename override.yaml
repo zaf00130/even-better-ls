@@ -47,7 +47,6 @@ EXTENSION_LIST: {
   ".txz":                       [ 0xF1C6,   ["#ffd282", -1] ],                        # 
   ".tz":                        [ 0xF1C6,   ["#ffd282", -1] ],                        # 
   ".xz":                        [ 0xF1C6,   ["#ffd282", -1] ],                        # 
-  ".Z":                         [ 0xF1C6,   ["#ffd282", -1] ],                        # 
   ".z":                         [ 0xF1C6,   ["#ffd282", -1] ],                        # 
   ".zip":                       [ 0xF1C6,   ["#ffd282", -1] ],                        # 
   ".zipx":                      [ 0xF1C6,   ["#ffd282", -1] ],                        # 
@@ -413,9 +412,9 @@ EXTENSION_LIST: {
   ".cab":                       [ 0xF487,   ["#d39d6c", -1] ],                        # 
   ".deb":                       [ 0xF487,   ["#d39d6c", -1] ],                        # 
   ".gem":                       [ 0xE739,   ["#ff5959", -1], ["#d39d6c", -1] ],       #   Ruby
-  ".jad":                       [ 0xE256,   ["#539fec", -1], ["#d39d6c", -1] ],       #  Java
-  ".jar":                       [ 0xE256,   ["#539fec", -1], ["#d39d6c", -1] ],       #  Java
-  ".war":                       [ 0xE256,   ["#539fec", -1], ["#d39d6c", -1] ],       #  Java
+  ".jad":                       [ 0xE256,   ["#539fec", -1], ["#d39d6c", -1] ],       #   Java
+  ".jar":                       [ 0xE256,   ["#539fec", -1], ["#d39d6c", -1] ],       #   Java
+  ".war":                       [ 0xE256,   ["#539fec", -1], ["#d39d6c", -1] ],       #   Java
   ".msi":                       [ 0xF487,   ["#d39d6c", -1] ],                        #   Win
   ".pak":                       [ 0xF487,   ["#d39d6c", -1] ],                        # 
   ".pk3":                       [ 0xF487,   ["#d39d6c", -1] ],                        # 
@@ -444,13 +443,11 @@ EXTENSION_LIST: {
   ".dicom":                     [ 0xF1C5,   ["#b8fbb9", -1] ],                        # 
   ".cdr":                       [ 0xF1C5,   ["#b8fbb9", -1] ],                        # 
   ".CR2":                       [ 0xF1C5,   ["#b8fbb9", -1] ],                        # 
-  ".drw":                       [ 0xF1C5,   ["#b8fbb9", -1] ],                        # 
   ".dvi":                       [ 0xF1C5,   ["#b8fbb9", -1] ],                        # 
   ".flif":                      [ 0xF1C5,   ["#b8fbb9", -1] ],                        # 
   ".gif":                       [ 0xF1C5,   ["#b8fbb9", -1] ],                        # 
   ".ico":                       [ 0xF1C5,   ["#b8fbb9", -1] ],                        # 
   ".jpeg":                      [ 0xF1C5,   ["#b8fbb9", -1] ],                        # 
-  ".JPG":                       [ 0xF1C5,   ["#b8fbb9", -1] ],                        # 
   ".jpg":                       [ 0xF1C5,   ["#b8fbb9", -1] ],                        # 
   ".mng":                       [ 0xF1C5,   ["#b8fbb9", -1] ],                        # 
   ".nth":                       [ 0xF1C5,   ["#b8fbb9", -1] ],                        # 
@@ -563,6 +560,7 @@ EXTENSION_LIST: {
   # Special text files
   "*AUTHORS":                   [ 0xF0C0,   ["#eeeeee", -1] ],                        # 
   "*CHANGES":                   [ 0xF0F6,   ["#eeeeee", -1] ],                        # 
+  "*CHANGELOG":                 [ 0xF0F6,   ["#eeeeee", -1] ],                        # 
   "*CONTRIBUTORS":              [ 0xF0C0,   ["#eeeeee", -1] ],                        # 
   "*COPYING":                   [ 0xF0C5,   ["#eeeeee", -1] ],                        # 
   "*COPYRIGHT":                 [ 0xF1F9,   ["#eeeeee", -1] ],                        # 
@@ -580,11 +578,14 @@ EXTENSION_LIST: {
   # Markup (web and templates)
   ".eml":                       [ 0xF121,   ["#ffe3c4", -1] ],                        #   Email message
   ".haml":                      [ 0xF121,   ["#ffe3c4", -1] ],                        #   HTML abstraction markup language
+  ".hamlc":                     [ 0xF121,   ["#ffe3c4", -1] ],                        #   Haml Coffee Template
   ".htm":                       [ 0xF13B,   ["#ffe3c4", -1] ],                        #   Hypertext Markup Language
   ".html":                      [ 0xF13B,   ["#ffe3c4", -1] ],                        #   Hypertext Markup Language
-  ".jhtm":                      [ 0xE256,   ["#539fec", -1], ["#ffe3c4", -1] ],       #  Java HTML
+  ".jhtm":                      [ 0xE256,   ["#539fec", -1], ["#ffe3c4", -1] ],       #   Java HTML
   ".mht":                       [ 0xF121,   ["#ffe3c4", -1] ],                        #   Web page archive
   ".mustache":                  [ 0xE228,   ["#7b7c7e", -1], ["#ffe3c4", -1] ],       #   {{ mustache }} template
+  ".handlebars":                [ 0xE228,   ["#7b7c7e", -1], ["#ffe3c4", -1] ],       #   Handlebars template
+  ".hbs":                       [ 0xE228,   ["#7b7c7e", -1], ["#ffe3c4", -1] ],       #   Handlebars template
   ".pug":                       [ 0xF121,   ["#ffe3c4", -1] ],                        #   Pug template
   ".shtml":                     [ 0xF121,   ["#ffe3c4", -1] ],                        #   Server Side Include HTML
   ".twig":                      [ 0xE61C,   ["#bed12b", -1], ["#ffe3c4", -1] ],       #   Twig
@@ -619,6 +620,7 @@ EXTENSION_LIST: {
   ".app":                       [ 0xF179,   ["#ffc200", -1] ],                        # 
 
   # Executables (Linux)
+  ".elf":                       [ 0xF489,   ["#ffc200", -1] ],                        # 
   ".ko":                        [ 0xF489,   ["#ffc200", -1] ],                        # 
 
   # Executables (Library)
@@ -690,23 +692,23 @@ EXTENSION_LIST: {
   ".sh":                        [ 0xF489,   ["#ffc200", -1] ],                        #   Shell
   ".zsh":                       [ 0xF489,   ["#ffc200", -1] ],                        #   Shell
   ".csh":                       [ 0xF489,   ["#ffc200", -1] ],                        #   Shell (C Shell)
-  ".c":                         [ 0xE61E,   ["#659bd3", -1], ["#3f7ec0", -1] ],       #   C/C++
-  ".c++":                       [ 0xE61E,   ["#659bd3", -1], ["#3f7ec0", -1] ],       #   C++
-  ".cc":                        [ 0xE61E,   ["#659bd3", -1], ["#3f7ec0", -1] ],       #   C++
-  ".cp":                        [ 0xE61E,   ["#659bd3", -1], ["#3f7ec0", -1] ],       #   C++
-  ".cpp":                       [ 0xE61E,   ["#659bd3", -1], ["#3f7ec0", -1] ],       #   C++
-  ".cxx":                       [ 0xE61E,   ["#659bd3", -1], ["#3f7ec0", -1] ],       #   C++
-  ".h":                         [ 0xE61E,   ["#659bd3", -1], ["#3f7ec0", -1] ],       #   C/C++/Objective-C, header file
-  ".h++":                       [ 0xE61E,   ["#659bd3", -1], ["#3f7ec0", -1] ],       #   C++, header file
-  ".hh":                        [ 0xE61E,   ["#659bd3", -1], ["#3f7ec0", -1] ],       #   C++, header file
-  ".hpp":                       [ 0xE61E,   ["#659bd3", -1], ["#3f7ec0", -1] ],       #   C++, header file
-  ".hxx":                       [ 0xE61E,   ["#659bd3", -1], ["#3f7ec0", -1] ],       #   C++, header file
-  ".ii":                        [ 0xE61E,   ["#659bd3", -1], ["#3f7ec0", -1] ],       #   C++
-  ".inl":                       [ 0xE61E,   ["#659bd3", -1], ["#3f7ec0", -1] ],       #   C++
-  ".ipp":                       [ 0xE61E,   ["#659bd3", -1], ["#3f7ec0", -1] ],       #   C++
-  ".tcc":                       [ 0xE61E,   ["#659bd3", -1], ["#3f7ec0", -1] ],       #   C++
+  ".c":                         [ 0xE61E,   ["#659bd3", -1], ["#3f7ec0", -1] ],       #   C
+  ".c++":                       [ 0xE61D,   ["#659bd3", -1], ["#3f7ec0", -1] ],       #   C++
+  ".cc":                        [ 0xE61D,   ["#659bd3", -1], ["#3f7ec0", -1] ],       #   C++
+  ".cp":                        [ 0xE61D,   ["#659bd3", -1], ["#3f7ec0", -1] ],       #   C++
+  ".cpp":                       [ 0xE61D,   ["#659bd3", -1], ["#3f7ec0", -1] ],       #   C++
+  ".cxx":                       [ 0xE61D,   ["#659bd3", -1], ["#3f7ec0", -1] ],       #   C++
+  ".h":                         [ 0xE61E,   ["#657cd3", -1], ["#3f7ec0", -1] ],       #   C, header file
+  ".h++":                       [ 0xE61D,   ["#657cd3", -1], ["#3f7ec0", -1] ],       #   C++, header file
+  ".hh":                        [ 0xE61D,   ["#657cd3", -1], ["#3f7ec0", -1] ],       #   C++, header file
+  ".hpp":                       [ 0xE61D,   ["#657cd3", -1], ["#3f7ec0", -1] ],       #   C++, header file
+  ".hxx":                       [ 0xE61D,   ["#657cd3", -1], ["#3f7ec0", -1] ],       #   C++, header file
+  ".ii":                        [ 0xE61D,   ["#659bd3", -1], ["#3f7ec0", -1] ],       #   C++
+  ".inl":                       [ 0xE61D,   ["#659bd3", -1], ["#3f7ec0", -1] ],       #   C++
+  ".ipp":                       [ 0xE61D,   ["#659bd3", -1], ["#3f7ec0", -1] ],       #   C++
+  ".tcc":                       [ 0xE61D,   ["#659bd3", -1], ["#3f7ec0", -1] ],       #   C++
   ".m":                         [ 0xE61E,   ["#659bd3", -1], ["#3f7ec0", -1] ],       #   Objective-C
-  ".mm":                        [ 0xE61E,   ["#659bd3", -1], ["#3f7ec0", -1] ],       #   Objective-C++
+  ".mm":                        [ 0xE61D,   ["#659bd3", -1], ["#3f7ec0", -1] ],       #   Objective-C++
   ".cgi":                       [ 0xF673,   ["#949494", -1] ],                        #   Common Gateway Interface
   ".def":                       [ 0xF673,   ["#949494", -1] ],                        # 
   ".cl":                        [ 0xF673,   ["#5e5e5e", -1], ["#eeeeee", -1] ],       #   Lisp
@@ -734,9 +736,10 @@ EXTENSION_LIST: {
   ".pp":                        [ 0xF673,   ["#ff9d1f", -1], ["#eeeeee", -1] ],       #   Puppet
   ".erb":                       [ 0xE739,   ["#ff5959", -1] ],                        #   Ruby
   ".rb":                        [ 0xE739,   ["#ff5959", -1] ],                        #   Ruby
-  ".erl":                       [ 0xE7B1,   ["#b8305e", -1], ["#eeeeee", -1] ],       #   Erlang
-  ".ex":                        [ 0xF673,   ["#b229da", -1], ["#77afc7", -1] ],       #   Euphoria
-  ".exs":                       [ 0xE62D,   ["#5f4896", -1], ["#9797c6", -1] ],       #   Elixir
+  ".erl":                       [ 0xE7B1,   ["#b8305e", -1], ["#eeeeee", -1] ],       #   Erlang
+  ".hrl":                       [ 0xE7B1,   ["#b8305e", -1], ["#eeeeee", -1] ],       #   Erlang
+  ".ex":                        [ 0xE62D,   ["#5f4896", -1], ["#9797c6", -1] ],       #   Elixir
+  ".exs":                       [ 0xE62D,   ["#5f4896", -1], ["#9797c6", -1] ],       #   Elixir
   ".f":                         [ "F",      ["#af875f", -1] ],                        # F  Fortran
   ".f90":                       [ "F",      ["#af875f", -1] ],                        # F  Fortran
   ".F90":                       [ "F",      ["#af875f", -1] ],                        # F  Fortran
@@ -758,6 +761,7 @@ EXTENSION_LIST: {
   ".gs":                        [ 0xF1A0,   ["#4285f4", -1], ["#b9d2fb", -1] ],       #   Google Apps Script
   ".gv":                        [ 0xF673,   ["#2dd8b7", -1] ],                        #   Graphviz
   ".hs":                        [ 0xE61F,   ["#7f498f", -1], ["#8787ff", -1] ],       #   Haskell
+  ".hsc":                       [ 0xE61F,   ["#7f498f", -1], ["#8787ff", -1] ],       #   Haskell
   ".lhs":                       [ 0xE61F,   ["#7f498f", -1], ["#8787ff", -1] ],       #   Haskell
   ".cabal":                     [ 0xE61F,   ["#7f498f", -1], ["#706af7", -1] ],       #   Cabal (Haskell)
   ".htc":                       [ 0xF673,   ["#0986a7", -1] ],                        #   HyperText Markup Language Components
@@ -785,8 +789,11 @@ EXTENSION_LIST: {
   ".mli":                       [ 0xF673,   ["#f08d32", -1] ],                        #   OCaml
   ".nim":                       [ 0xF6A4,   ["#f8e87a", -1] ],                        #   Nimble
   ".nimble":                    [ 0xF6A4,   ["#f8e87a", -1] ],                        #   Nimble
+  ".node":                      [ 0xF898,   ["#79b85f", -1] ],                        #   Node.js
+  ".njs":                       [ 0xF898,   ["#79b85f", -1] ],                        #   Node.js
   ".moon":                      [ 0xF186,   ["#8a8a8a", -1], ["#d4d2d2", -1] ],       #   MoonScript
   ".nb":                        [ 0xF673,   ["#d5343d", -1] ],                        #   Wolfram Mathematica
+  ".perl":                      [ 0xE769,   ["#61c5ba", -1] ],                        #   Perl
   ".pl":                        [ 0xE769,   ["#61c5ba", -1] ],                        #   Perl
   ".pm":                        [ 0xE769,   ["#61c5ba", -1] ],                        #   Perl
   ".t":                         [ 0xE769,   ["#61c5ba", -1] ],                        #   Perl
@@ -796,10 +803,16 @@ EXTENSION_LIST: {
   ".psd1":                      [ 0xF120,   ["#0e5df9", -1], ["#eeeeee", -1] ],       #   Powershell
   ".psm1":                      [ 0xF120,   ["#0e5df9", -1], ["#eeeeee", -1] ],       #   Powershell
   ".py":                        [ 0xE606,   ["#4784b6", -1], ["#f5da6e", -1] ],       #   Python
+  ".py3":                       [ 0xE606,   ["#4784b6", -1], ["#f5da6e", -1] ],       #   Python
+  ".pyi":                       [ 0xE606,   ["#4784b6", -1], ["#f5da6e", -1] ],       #   Python
+  ".pyw":                       [ 0xE606,   ["#4784b6", -1], ["#f5da6e", -1] ],       #   Python
+  ".ipy":                       [ 0xE606,   ["#4784b6", -1], ["#f5da6e", -1] ],       #   Python
   ".ipynb":                     [ 0xE606,   ["#4784b6", -1], ["#f5da6e", -1] ],       #   Jupyter Notebook (Python)
+  ".tac":                       [ 0xE606,   ["#4784b6", -1], ["#f5da6e", -1] ],       #   Twisted Python
   ".r":                         [ 0xFCD2,   ["#256bc0", -1], ["#bdbfc2", -1] ],       # ﳒ  R
   ".rs":                        [ 0xE7A8,   ["#787878", -1], ["#eeeeee", -1] ],       #   Rust
   ".s":                         [ 0xE79D,   ["#a3987f", -1] ],                        #   Assembly
+  ".sc":                        [ 0xE737,   ["#d25153", -1] ],                        #   Scala
   ".scala":                     [ 0xE737,   ["#d25153", -1] ],                        #   Scala
   ".sed":                       [ 0xF673,   ["#a2af10", -1] ],                        #   sed
   ".swift":                     [ 0xFBE3,   ["#ff875f", -1] ],                        # ﯣ  Swift
@@ -819,6 +832,11 @@ EXTENSION_LIST: {
   "*known_hosts":               [ 0xF109,   ["#a8a8a8", -1, "3"] ],                   #   SSH
   "*cfg":                       [ 0xF0AD,   ["#a8a8a8", -1, "3"] ],                   # 
   "*conf":                      [ 0xF0AD,   ["#a8a8a8", -1, "3"] ],                   # 
+  ".babel":                     [ 0xE60C,   ["#ffe938", -1], ["#a8a8a8", -1, "3"] ],  #   Babel
+  ".babelrc":                   [ 0xE60C,   ["#ffe938", -1], ["#a8a8a8", -1, "3"] ],  #   Babel
+  ".babelignore":               [ 0xE60C,   ["#ffe938", -1], ["#a8a8a8", -1, "3"] ],  #   Babel
+  ".languagebabel":             [ 0xE60C,   ["#ffe938", -1], ["#a8a8a8", -1, "3"] ],  #   Babel
+  ".bowerrc":                   [ 0xE61A,   ["#ef5734", -1], ["#a8a8a8", -1, "3"] ],  #   Bower
   ".cfg":                       [ 0xF0AD,   ["#a8a8a8", -1, "3"] ],                   # 
   ".config":                    [ 0xF0AD,   ["#a8a8a8", -1, "3"] ],                   # 
   ".allow":                     [ 0xF00C,   ["#8BEF9A", -1, "3"] ],                   #   /etc/hosts.allow
@@ -831,14 +849,22 @@ EXTENSION_LIST: {
   ".profile":                   [ 0xF489,   ["#7592b2", -1], ["#a8a8a8", -1, "3"] ],  #   Shell
   ".zwc":                       [ 0xF487,   ["#7592b2", -1], ["#a8a8a8", -1, "3"] ],  #   Shell
   ".cue":                       [ 0xE60B,   ["#a8a8a8", -1, "3"] ],                   # 
+  ".cson":                      [ 0xE61B,   ["#b4863b", -1], ["#a8a8a8", -1, "3"] ],  #   CoffeeScript
+  ".ctags":                     [ 0xE60B,   ["#a8a8a8", -1, "3"] ],                   # 
   ".description":               [ 0xE60B,   ["#a8a8a8", -1, "3"] ],                   # 
   ".desktop":                   [ 0xF6C3,   ["#a8a8a8", -1, "3"] ],                   # 
   ".directory":                 [ 0xE60B,   ["#a8a8a8", -1, "3"] ],                   # 
+  ".dockerignore":              [ 0xF308,   ["#329ded", -1], ["#a8a8a8", -1, "3"] ],  #   Docker
   ".editorconfig":              [ 0xE60B,   ["#a8a8a8", -1, "3"] ],                   # 
   ".envrc":                     [ 0xE60B,   ["#a8a8a8", -1, "3"] ],                   # 
   ".flake8":                    [ 0xE606,   ["#4784b6", -1], ["#a8a8a8", -1, "3"] ],  #   Python (code-style)
+  ".pep":                       [ 0xE606,   ["#4784b6", -1], ["#a8a8a8", -1, "3"] ],  #   Python (code-style)
+  ".pyt":                       [ 0xE606,   ["#4784b6", -1], ["#a8a8a8", -1, "3"] ],  #   Python
+  ".pypirc":                    [ 0xE606,   ["#4784b6", -1], ["#a8a8a8", -1, "3"] ],  #   Python
+  "*pipfile":                   [ 0xE606,   ["#4784b6", -1], ["#a8a8a8", -1, "3"] ],  #   Python
   ".gemfile":                   [ 0xE739,   ["#ff5959", -1], ["#a8a8a8", -1, "3"] ],  #   Ruby
   ".gemspec":                   [ 0xE739,   ["#ff5959", -1], ["#a8a8a8", -1, "3"] ],  #   Ruby
+  ".gemtags":                   [ 0xE739,   ["#ff5959", -1], ["#a8a8a8", -1, "3"] ],  #   Ruby
   ".ini":                       [ 0xF0AD,   ["#a8a8a8", -1, "3"] ],                   # 
   ".json":                      [ 0xE60B,   ["#ffe938", -1], ["#a8a8a8", -1, "3"] ],  # 
   ".jsonl":                     [ 0xE60B,   ["#ffe938", -1], ["#a8a8a8", -1, "3"] ],  # 
@@ -859,10 +885,12 @@ EXTENSION_LIST: {
   ".yml":                       [ 0xE60B,   ["#fd6666", -1], ["#a8a8a8", -1, "3"] ],  # 
   ".xml":                       [ 0xF121,   ["#ffe3c4", -1], ["#a8a8a8", -1, "3"] ],  # 
 
-  # Node.js/npm
+  # npm
   "*node_modules":              [ 0xE71E,   ["#505158", -1, "3"] ],                   # 
   ".npmignore":                 [ 0xE71E,   ["#cb3837", -1], ["#a8a8a8", -1, "3"] ],  # 
   ".npmrc":                     [ 0xE71E,   ["#cb3837", -1], ["#a8a8a8", -1, "3"] ],  # 
+  ".node-version":              [ 0xF898,   ["#79b85f", -1], ["#a8a8a8", -1, "3"] ],  #   Node.js
+  ".nvmrc":                     [ 0xF898,   ["#79b85f", -1], ["#a8a8a8", -1, "3"] ],  #   Node.js
 
   # Git
   ".git":                       [ 0xF1D3,   ["#505158", -1, "3"] ],                   # 
@@ -913,14 +941,17 @@ EXTENSION_LIST: {
   ".am":                        [ 0xF0F7,   ["#bdada8", -1, "1"] ],                   #   Automake
   ".scan":                      [ 0xF0F7,   ["#bdada8", -1, "1"] ],                   #   Automake
   ".m4":                        [ 0xF0F7,   ["#bdada8", -1, "1"] ],                   #   Automake
+  "*Bowerfile":                 [ 0xE61A,   ["#ef5734", -1], ["#bdada8", -1, "1"] ],  #   Bower
   ".cmake":                     [ 0xF0F7,   ["#ffc200", -1], ["#bdada8", -1, "1"] ],  #   CMake
-  "*Dockerfile":                [ 0xF308,   ["#329ded", -1], ["#bdada8", -1, "1"] ],  # 
-  ".dockerignore":              [ 0xF308,   ["#329ded", -1], ["#a8a8a8", -1, "3"] ],  # 
+  "*Dockerfile":                [ 0xF308,   ["#329ded", -1], ["#bdada8", -1, "1"] ],  #   Docker
   "*Makefile":                  [ 0xF0F7,   ["#ffc200", -1], ["#bdada8", -1, "1"] ],  # 
   ".make":                      [ 0xF0F7,   ["#ffc200", -1], ["#bdada8", -1, "1"] ],  # 
   "*MANIFEST":                  [ 0xF0F7,   ["#bdada8", -1, "1"] ],                   # 
+  ".gyp":                       [ 0xE606,   ["#4784b6", -1], ["#bdada8", -1, "1"] ],  #   Python
+  ".gypi":                      [ 0xE606,   ["#4784b6", -1], ["#bdada8", -1, "1"] ],  #   Python
   "*Rakefile":                  [ 0xE739,   ["#ff5959", -1], ["#bdada8", -1, "1"] ],  #   Ruby
   ".rake":                      [ 0xE739,   ["#ff5959", -1], ["#bdada8", -1, "1"] ],  #   Ruby
+  "*Phakefile":                 [ 0xE608,   ["#8787ff", -1], ["#bdada8", -1, "1"] ],  #   PHP
   "*pm_to_blib":                [ 0xE769,   ["#61c5ba", -1], ["#bdada8", -1, "1"] ],  #   Perl
   ".tf":                        [ "T",      ["#875fff", -1], ["#bdada8", -1, "1"] ],  # T  Orchestration
   ".tfstate":                   [ "T",      ["#875fff", -1], ["#bdada8", -1, "1"] ],  # T  Orchestration

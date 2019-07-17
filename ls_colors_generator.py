@@ -70,7 +70,6 @@ def get_colors():
     ".txz":                       [ 0xF1C6,   [222, -1] ],                       # 
     ".tz":                        [ 0xF1C6,   [222, -1] ],                       # 
     ".xz":                        [ 0xF1C6,   [222, -1] ],                       # 
-    ".Z":                         [ 0xF1C6,   [222, -1] ],                       # 
     ".z":                         [ 0xF1C6,   [222, -1] ],                       # 
     ".zip":                       [ 0xF1C6,   [222, -1] ],                       # 
     ".zipx":                      [ 0xF1C6,   [222, -1] ],                       # 
@@ -436,9 +435,9 @@ def get_colors():
     ".cab":                       [ 0xF487,   [215, -1] ],                       # 
     ".deb":                       [ 0xF487,   [215, -1] ],                       # 
     ".gem":                       [ 0xE739,   [203, -1], [215, -1] ],            #   Ruby
-    ".jad":                       [ 0xE256,   [68,  -1], [215, -1] ],            #  Java
-    ".jar":                       [ 0xE256,   [68,  -1], [215, -1] ],            #  Java
-    ".war":                       [ 0xE256,   [68,  -1], [215, -1] ],            #  Java
+    ".jad":                       [ 0xE256,   [68,  -1], [215, -1] ],            #   Java
+    ".jar":                       [ 0xE256,   [68,  -1], [215, -1] ],            #   Java
+    ".war":                       [ 0xE256,   [68,  -1], [215, -1] ],            #   Java
     ".msi":                       [ 0xF487,   [215, -1] ],                       #   Win
     ".pak":                       [ 0xF487,   [215, -1] ],                       # 
     ".pk3":                       [ 0xF487,   [215, -1] ],                       # 
@@ -467,7 +466,6 @@ def get_colors():
     ".dicom":                     [ 0xF1C5,   [157, -1] ],                       # 
     ".cdr":                       [ 0xF1C5,   [157, -1] ],                       # 
     ".CR2":                       [ 0xF1C5,   [157, -1] ],                       # 
-    ".drw":                       [ 0xF1C5,   [157, -1] ],                       # 
     ".dvi":                       [ 0xF1C5,   [157, -1] ],                       # 
     ".flif":                      [ 0xF1C5,   [157, -1] ],                       # 
     ".gif":                       [ 0xF1C5,   [157, -1] ],                       # 
@@ -585,6 +583,7 @@ def get_colors():
     # Special text files
     "*AUTHORS":                   [ 0xF0C0,   [255, -1] ],                       # 
     "*CHANGES":                   [ 0xF0F6,   [255, -1] ],                       # 
+    "*CHANGELOG":                 [ 0xF0F6,   [255, -1] ],                       # 
     "*CONTRIBUTORS":              [ 0xF0C0,   [255, -1] ],                       # 
     "*COPYING":                   [ 0xF0C5,   [255, -1] ],                       # 
     "*COPYRIGHT":                 [ 0xF1F9,   [255, -1] ],                       # 
@@ -602,11 +601,14 @@ def get_colors():
     # Markup (web and templates)
     ".eml":                       [ 0xF121,   [223, -1] ],                       #   Email message
     ".haml":                      [ 0xF121,   [223, -1] ],                       #   HTML abstraction markup language
+    ".hamlc":                     [ 0xF121,   [223, -1] ],                       #   Haml Coffee Template
     ".htm":                       [ 0xF13B,   [223, -1] ],                       #   Hypertext Markup Language
     ".html":                      [ 0xF13B,   [223, -1] ],                       #   Hypertext Markup Language
-    ".jhtm":                      [ 0xE256,   [68,  -1], [223, -1] ],            #  Java HTML
+    ".jhtm":                      [ 0xE256,   [68,  -1], [223, -1] ],            #   Java HTML
     ".mht":                       [ 0xF121,   [223, -1] ],                       #   Web page archive
     ".mustache":                  [ 0xE228,   [244, -1], [223, -1] ],            #   {{ mustache }} template
+    ".handlebars":                [ 0xE228,   [244, -1], [223, -1] ],            #   Handlebars template
+    ".hbs":                       [ 0xE228,   [244, -1], [223, -1] ],            #   Handlebars template
     ".pug":                       [ 0xF121,   [223, -1] ],                       #   Pug template
     ".shtml":                     [ 0xF121,   [223, -1] ],                       #   Server Side Include HTML
     ".twig":                      [ 0xE61C,   [149, -1], [223, -1] ],            #   Twig
@@ -641,6 +643,7 @@ def get_colors():
     ".app":                       [ 0xF179,   [214, -1] ],                       # 
 
     # Executables (Linux)
+    ".elf":                       [ 0xF489,   [214, -1] ],                       # 
     ".ko":                        [ 0xF489,   [214, -1] ],                       # 
 
     # Executables (Library)
@@ -712,23 +715,23 @@ def get_colors():
     ".sh":                        [ 0xF489,   [214, -1] ],                       #   Shell
     ".zsh":                       [ 0xF489,   [214, -1] ],                       #   Shell
     ".csh":                       [ 0xF489,   [214, -1] ],                       #   Shell (C Shell)
-    ".c":                         [ 0xE61E,   [110, -1], [32, -1] ],             #   C/C++
-    ".c++":                       [ 0xE61E,   [110, -1], [32, -1] ],             #   C++
-    ".cc":                        [ 0xE61E,   [110, -1], [32, -1] ],             #   C++
-    ".cp":                        [ 0xE61E,   [110, -1], [32, -1] ],             #   C++
-    ".cpp":                       [ 0xE61E,   [110, -1], [32, -1] ],             #   C++
-    ".cxx":                       [ 0xE61E,   [110, -1], [32, -1] ],             #   C++
-    ".h":                         [ 0xE61E,   [110, -1], [32, -1] ],             #   C/C++/Objective-C, header file
-    ".h++":                       [ 0xE61E,   [110, -1], [32, -1] ],             #   C++, header file
-    ".hh":                        [ 0xE61E,   [110, -1], [32, -1] ],             #   C++, header file
-    ".hpp":                       [ 0xE61E,   [110, -1], [32, -1] ],             #   C++, header file
-    ".hxx":                       [ 0xE61E,   [110, -1], [32, -1] ],             #   C++, header file
-    ".ii":                        [ 0xE61E,   [110, -1], [32, -1] ],             #   C++
-    ".inl":                       [ 0xE61E,   [110, -1], [32, -1] ],             #   C++
-    ".ipp":                       [ 0xE61E,   [110, -1], [32, -1] ],             #   C++
-    ".tcc":                       [ 0xE61E,   [110, -1], [32, -1] ],             #   C++
+    ".c":                         [ 0xE61E,   [110, -1], [32, -1] ],             #   C
+    ".c++":                       [ 0xE61D,   [110, -1], [32, -1] ],             #   C++
+    ".cc":                        [ 0xE61D,   [110, -1], [32, -1] ],             #   C++
+    ".cp":                        [ 0xE61D,   [110, -1], [32, -1] ],             #   C++
+    ".cpp":                       [ 0xE61D,   [110, -1], [32, -1] ],             #   C++
+    ".cxx":                       [ 0xE61D,   [110, -1], [32, -1] ],             #   C++
+    ".h":                         [ 0xE61E,   [105, -1], [32, -1] ],             #   C, header file
+    ".h++":                       [ 0xE61D,   [105, -1], [32, -1] ],             #   C++, header file
+    ".hh":                        [ 0xE61D,   [105, -1], [32, -1] ],             #   C++, header file
+    ".hpp":                       [ 0xE61D,   [105, -1], [32, -1] ],             #   C++, header file
+    ".hxx":                       [ 0xE61D,   [105, -1], [32, -1] ],             #   C++, header file
+    ".ii":                        [ 0xE61D,   [110, -1], [32, -1] ],             #   C++
+    ".inl":                       [ 0xE61D,   [110, -1], [32, -1] ],             #   C++
+    ".ipp":                       [ 0xE61D,   [110, -1], [32, -1] ],             #   C++
+    ".tcc":                       [ 0xE61D,   [110, -1], [32, -1] ],             #   C++
     ".m":                         [ 0xE61E,   [110, -1], [32, -1] ],             #   Objective-C
-    ".mm":                        [ 0xE61E,   [110, -1], [32, -1] ],             #   Objective-C++
+    ".mm":                        [ 0xE61D,   [110, -1], [32, -1] ],             #   Objective-C++
     ".cgi":                       [ 0xF673,   [246, -1] ],                       #   Common Gateway Interface
     ".def":                       [ 0xF673,   [246, -1] ],                       # 
     ".cl":                        [ 0xF673,   [239, -1], [255, -1] ],            #   Lisp
@@ -756,8 +759,9 @@ def get_colors():
     ".pp":                        [ 0xF673,   [202, -1], [255, -1] ],            #   Puppet
     ".erb":                       [ 0xE739,   [203, -1] ],                       #   Ruby
     ".rb":                        [ 0xE739,   [203, -1] ],                       #   Ruby
-    ".erl":                       [ 0xE7B1,   [197, -1], [255, -1] ],            #   Erlang
-    ".ex":                        [ 0xF673,   [128, -1], [67,  -1] ],            #   Euphoria
+    ".erl":                       [ 0xE7B1,   [197, -1], [255, -1] ],            #   Erlang
+    ".hrl":                       [ 0xE7B1,   [197, -1], [255, -1] ],            #   Erlang
+    ".ex":                        [ 0xE62D,   [97,  -1], [104, -1] ],            #   Elixir
     ".exs":                       [ 0xE62D,   [97,  -1], [104, -1] ],            #   Elixir
     ".f":                         [ "F",      [137, -1] ],                       # F  Fortran
     ".f90":                       [ "F",      [137, -1] ],                       # F  Fortran
@@ -780,6 +784,7 @@ def get_colors():
     ".gs":                        [ 0xF1A0,   [39,  -1], [153, -1] ],            #   Google Apps Script
     ".gv":                        [ 0xF673,   [84,  -1] ],                       #   Graphviz
     ".hs":                        [ 0xE61F,   [97,  -1], [105, -1] ],            #   Haskell
+    ".hsc":                       [ 0xE61F,   [97,  -1], [105, -1] ],            #   Haskell
     ".lhs":                       [ 0xE61F,   [97,  -1], [105, -1] ],            #   Haskell
     ".cabal":                     [ 0xE61F,   [97,  -1], [141, -1] ],            #   Cabal (Haskell)
     ".htc":                       [ 0xF673,   [31,  -1] ],                       #   HyperText Markup Language Components
@@ -807,8 +812,11 @@ def get_colors():
     ".mli":                       [ 0xF673,   [214, -1] ],                       #   OCaml
     ".nim":                       [ 0xF6A4,   [222, -1] ],                       #   Nimble
     ".nimble":                    [ 0xF6A4,   [222, -1] ],                       #   Nimble
+    ".node":                      [ 0xF898,   [114, -1] ],                       #   Node.js
+    ".njs":                       [ 0xF898,   [114, -1] ],                       #   Node.js
     ".moon":                      [ 0xF186,   [245, -1], [252, -1] ],            #   MoonScript
     ".nb":                        [ 0xF673,   [160, -1] ],                       #   Wolfram Mathematica
+    ".perl":                      [ 0xE769,   [122, -1] ],                       #   Perl
     ".pl":                        [ 0xE769,   [122, -1] ],                       #   Perl
     ".pm":                        [ 0xE769,   [122, -1] ],                       #   Perl
     ".t":                         [ 0xE769,   [122, -1] ],                       #   Perl
@@ -818,10 +826,16 @@ def get_colors():
     ".psd1":                      [ 0xF120,   [27,  -1], [255, -1] ],            #   Powershell
     ".psm1":                      [ 0xF120,   [27,  -1], [255, -1] ],            #   Powershell
     ".py":                        [ 0xE606,   [68,  -1], [228, -1] ],            #   Python
+    ".py3":                       [ 0xE606,   [68,  -1], [228, -1] ],            #   Python
+    ".pyi":                       [ 0xE606,   [68,  -1], [228, -1] ],            #   Python
+    ".pyw":                       [ 0xE606,   [68,  -1], [228, -1] ],            #   Python
+    ".ipy":                       [ 0xE606,   [68,  -1], [228, -1] ],            #   Python
     ".ipynb":                     [ 0xE606,   [68,  -1], [228, -1] ],            #   Jupyter Notebook (Python)
+    ".tac":                       [ 0xE606,   [68,  -1], [228, -1] ],            #   Twiested Python
     ".r":                         [ 0xFCD2,   [32,  -1], [250, -1] ],            # ﳒ  R
     ".rs":                        [ 0xE7A8,   [245, -1], [255, -1] ],            #   Rust
     ".s":                         [ 0xE79D,   [101, -1] ],                       #   Assembly
+    ".sc":                        [ 0xE737,   [167, -1] ],                       #   Scala
     ".scala":                     [ 0xE737,   [167, -1] ],                       #   Scala
     ".sed":                       [ 0xF673,   [142, -1] ],                       #   sed
     ".swift":                     [ 0xFBE3,   [209, -1] ],                       # ﯣ  Swift
@@ -841,6 +855,11 @@ def get_colors():
     "*known_hosts":               [ 0xF109,   [248, -1, "3"] ],                  #   SSH
     "*cfg":                       [ 0xF0AD,   [248, -1, "3"] ],                  # 
     "*conf":                      [ 0xF0AD,   [248, -1, "3"] ],                  # 
+    ".babel":                     [ 0xE60C,   [226, -1], [248, -1, "3"] ],       #   Babel
+    ".babelrc":                   [ 0xE60C,   [226, -1], [248, -1, "3"] ],       #   Babel
+    ".babelignore":               [ 0xE60C,   [226, -1], [248, -1, "3"] ],       #   Babel
+    ".languagebabel":             [ 0xE60C,   [226, -1], [248, -1, "3"] ],       #   Babel
+    ".bowerrc":                   [ 0xE61A,   [203, -1], [248, -1, "3"] ],       #   Bower
     ".cfg":                       [ 0xF0AD,   [248, -1, "3"] ],                  # 
     ".config":                    [ 0xF0AD,   [248, -1, "3"] ],                  # 
     ".allow":                     [ 0xF00C,   [120, -1, "3"] ],                  #   /etc/hosts.allow
@@ -853,14 +872,22 @@ def get_colors():
     ".profile":                   [ 0xF489,   [67,  -1], [248, -1, "3"] ],       #   Shell
     ".zwc":                       [ 0xF487,   [67,  -1], [248, -1, "3"] ],       #   Shell
     ".cue":                       [ 0xE60B,   [248, -1, "3"] ],                  # 
+    ".cson":                      [ 0xE61B,   [137, -1], [248, -1, "3"] ],       #   CoffeeScript
+    ".ctags":                     [ 0xE60B,   [248, -1, "3"] ],                  # 
     ".description":               [ 0xE60B,   [248, -1, "3"] ],                  # 
     ".desktop":                   [ 0xF6C3,   [248, -1, "3"] ],                  # 
     ".directory":                 [ 0xE60B,   [248, -1, "3"] ],                  # 
+    ".dockerignore":              [ 0xF308,   [39,  -1], [248, -1, "3"] ],       #   Docker
     ".editorconfig":              [ 0xE60B,   [248, -1, "3"] ],                  # 
     ".envrc":                     [ 0xE60B,   [248, -1, "3"] ],                  # 
     ".flake8":                    [ 0xE606,   [68,  -1], [248, -1, "3"] ],       #   Python (code-style)
+    ".pep":                       [ 0xE606,   [68,  -1], [248, -1, "3"] ],       #   Python (code-style)
+    ".pyt":                       [ 0xE606,   [68,  -1], [248, -1, "3"] ],       #   Python
+    ".pypirc":                    [ 0xE606,   [68,  -1], [248, -1, "3"] ],       #   Python
+    "*pipfile":                   [ 0xE606,   [68,  -1], [248, -1, "3"] ],       #   Python
     ".gemfile":                   [ 0xE739,   [203, -1], [248, -1, "3"] ],       #   Ruby
     ".gemspec":                   [ 0xE739,   [203, -1], [248, -1, "3"] ],       #   Ruby
+    ".gemtags":                   [ 0xE739,   [203, -1], [248, -1, "3"] ],       #   Ruby
     ".ini":                       [ 0xF0AD,   [248, -1, "3"] ],                  # 
     ".json":                      [ 0xE60B,   [226, -1], [248, -1, "3"] ],       # 
     ".jsonl":                     [ 0xE60B,   [226, -1], [248, -1, "3"] ],       # 
@@ -885,6 +912,8 @@ def get_colors():
     "*node_modules":              [ 0xE71E,   [240, -1, "3"] ],                  # 
     ".npmignore":                 [ 0xE71E,   [167, -1], [248, -1, "3"] ],       # 
     ".npmrc":                     [ 0xE71E,   [167, -1], [248, -1, "3"] ],       # 
+    ".node-version":              [ 0xF898,   [114, -1], [248, -1, "3"] ],       #   Node.js
+    ".nvmrc":                     [ 0xF898,   [114, -1], [248, -1, "3"] ],       #   Node.js
 
     # Git
     ".git":                       [ 0xF1D3,   [240, -1, "3"] ],                  # 
@@ -917,209 +946,212 @@ def get_colors():
     ".timer":                     [ 0xF109,   [242, -1], [248, -1, "3"] ],       # 
 
     # Error logs
-    ".err":                       [ 0xF06A,   [203, -1], [240, -1, "3"] ],      # 
-    ".error":                     [ 0xF06A,   [203, -1], [240, -1, "3"] ],      # 
-    ".stderr":                    [ 0xF06A,   [203, -1], [240, -1, "3"] ],      # 
+    ".err":                       [ 0xF06A,   [203, -1], [240, -1, "3"] ],       # 
+    ".error":                     [ 0xF06A,   [203, -1], [240, -1, "3"] ],       # 
+    ".stderr":                    [ 0xF06A,   [203, -1], [240, -1, "3"] ],       # 
 
     # State dumps
-    ".dump":                      [ 0xf022,   [240, -1, "3"] ],                 # 
-    ".zcompdump":                 [ 0xf022,   [240, -1, "3"] ],                 #   Shell
-    ".stackdump":                 [ 0xf022,   [240, -1, "3"] ],                 # 
+    ".dump":                      [ 0xf022,   [240, -1, "3"] ],                  # 
+    ".zcompdump":                 [ 0xf022,   [240, -1, "3"] ],                  #   Shell
+    ".stackdump":                 [ 0xf022,   [240, -1, "3"] ],                  # 
 
     # tcpdump, network traffic capture
-    ".cap":                       [ 0xE765,   [74,  -1] ],                      # 
-    ".dmp":                       [ 0xE765,   [74,  -1] ],                      # 
-    ".pcap":                      [ 0xE765,   [74,  -1] ],                      # 
+    ".cap":                       [ 0xE765,   [74,  -1] ],                       # 
+    ".dmp":                       [ 0xE765,   [74,  -1] ],                       # 
+    ".pcap":                      [ 0xE765,   [74,  -1] ],                       # 
 
     # Build files
-    ".am":                        [ 0xF0F7,   [195, -1, "1"] ],                 #   Automake
-    ".scan":                      [ 0xF0F7,   [195, -1, "1"] ],                 #   Automake
-    ".m4":                        [ 0xF0F7,   [195, -1, "1"] ],                 #   Automake
-    ".cmake":                     [ 0xF0F7,   [214, -1], [195, -1, "1"] ],      #   CMake
-    "*Dockerfile":                [ 0xF308,   [39,  -1], [195, -1, "1"] ],      # 
-    ".dockerignore":              [ 0xF308,   [39,  -1], [248, -1, "3"] ],      # 
-    "*Makefile":                  [ 0xF0F7,   [214, -1], [195, -1, "1"] ],      # 
-    ".make":                      [ 0xF0F7,   [214, -1], [195, -1, "1"] ],      # 
-    "*MANIFEST":                  [ 0xF0F7,   [195, -1, "1"] ],                 # 
-    "*Rakefile":                  [ 0xE739,   [203, -1], [195, -1, "1"] ],      #   Ruby
-    ".rake":                      [ 0xE739,   [203, -1], [195, -1, "1"] ],      #   Ruby
-    "*pm_to_blib":                [ 0xE769,   [122, -1], [195, -1, "1"] ],      #   Perl
-    ".tf":                        [ "T",      [99,  -1], [195, -1, "1"] ],      # T  Orchestration
-    ".tfstate":                   [ "T",      [99,  -1], [195, -1, "1"] ],      # T  Orchestration
-    ".tfvars":                    [ "T",      [99,  -1], [195, -1, "1"] ],      # T  Orchestration
-    "*Vagrantfile":               [ "V",      [27,  -1], [195, -1, "1"] ],      # V  Vagrant
+    ".am":                        [ 0xF0F7,   [195, -1, "1"] ],                  #   Automake
+    ".scan":                      [ 0xF0F7,   [195, -1, "1"] ],                  #   Automake
+    ".m4":                        [ 0xF0F7,   [195, -1, "1"] ],                  #   Automake
+    "*Bowerfile":                 [ 0xE61A,   [203, -1], [195, -1, "1"] ],       #   Bower
+    ".cmake":                     [ 0xF0F7,   [214, -1], [195, -1, "1"] ],       #   CMake
+    "*Dockerfile":                [ 0xF308,   [39,  -1], [195, -1, "1"] ],       #   Docker
+    "*Makefile":                  [ 0xF0F7,   [214, -1], [195, -1, "1"] ],       # 
+    ".make":                      [ 0xF0F7,   [214, -1], [195, -1, "1"] ],       # 
+    "*MANIFEST":                  [ 0xF0F7,   [195, -1, "1"] ],                  # 
+    ".gyp":                       [ 0xE606,   [68,  -1], [195, -1, "1"] ],       #   Python
+    ".gypi":                      [ 0xE606,   [68,  -1], [195, -1, "1"] ],       #   Python
+    "*Rakefile":                  [ 0xE739,   [203, -1], [195, -1, "1"] ],       #   Ruby
+    ".rake":                      [ 0xE739,   [203, -1], [195, -1, "1"] ],       #   Ruby
+    "*Phakefile":                 [ 0xE608,   [105, -1], [195, -1, "1"] ],       #   PHP
+    "*pm_to_blib":                [ 0xE769,   [122, -1], [195, -1, "1"] ],       #   Perl
+    ".tf":                        [ "T",      [99,  -1], [195, -1, "1"] ],       # T  Orchestration
+    ".tfstate":                   [ "T",      [99,  -1], [195, -1, "1"] ],       # T  Orchestration
+    ".tfvars":                    [ "T",      [99,  -1], [195, -1, "1"] ],       # T  Orchestration
+    "*Vagrantfile":               [ "V",      [27,  -1], [195, -1, "1"] ],       # V  Vagrant
 
     # Database
-    ".accdb":                     [ 0xF1C0,   [103, -1] ],                      # 
-    ".accde":                     [ 0xF1C0,   [103, -1] ],                      # 
-    ".accdr":                     [ 0xF1C0,   [103, -1] ],                      # 
-    ".accdt":                     [ 0xF1C0,   [103, -1] ],                      # 
-    ".db":                        [ 0xF1C0,   [103, -1] ],                      # 
-    ".fmp12":                     [ 0xF1C0,   [103, -1] ],                      # 
-    ".fp7":                       [ 0xF1C0,   [103, -1] ],                      # 
-    ".localstorage":              [ 0xF1C0,   [103, -1] ],                      # 
-    ".mdb":                       [ 0xF1C0,   [103, -1] ],                      # 
-    ".mde":                       [ 0xF1C0,   [103, -1] ],                      # 
-    ".odb":                       [ 0xF1C0,   [103, -1] ],                      #   OpenOffice
-    ".rdb":                       [ 0xF1C0,   [103, -1] ],                      #   Redis
-    ".sqlite":                    [ 0xF1C0,   [103, -1] ],                      # 
-    ".sqlite3":                   [ 0xF1C0,   [103, -1] ],                      # 
-    ".typelib":                   [ 0xF1C0,   [103, -1] ],                      # 
+    ".accdb":                     [ 0xF1C0,   [103, -1] ],                       # 
+    ".accde":                     [ 0xF1C0,   [103, -1] ],                       # 
+    ".accdr":                     [ 0xF1C0,   [103, -1] ],                       # 
+    ".accdt":                     [ 0xF1C0,   [103, -1] ],                       # 
+    ".db":                        [ 0xF1C0,   [103, -1] ],                       # 
+    ".fmp12":                     [ 0xF1C0,   [103, -1] ],                       # 
+    ".fp7":                       [ 0xF1C0,   [103, -1] ],                       # 
+    ".localstorage":              [ 0xF1C0,   [103, -1] ],                       # 
+    ".mdb":                       [ 0xF1C0,   [103, -1] ],                       # 
+    ".mde":                       [ 0xF1C0,   [103, -1] ],                       # 
+    ".odb":                       [ 0xF1C0,   [103, -1] ],                       #   OpenOffice
+    ".rdb":                       [ 0xF1C0,   [103, -1] ],                       #   Redis
+    ".sqlite":                    [ 0xF1C0,   [103, -1] ],                       # 
+    ".sqlite3":                   [ 0xF1C0,   [103, -1] ],                       # 
+    ".typelib":                   [ 0xF1C0,   [103, -1] ],                       # 
 
     # Other
-    ".ai":                        [ 0xE7B4,   [208, -1], [-1,  -1] ],           #   Adobe Illustrator
-    ".fla":                       [ 0xF0E7,   [203, -1], [-1,  -1] ],           #   Adobe Flash
-    ".psd":                       [ 0xE7B8,   [33,  -1], [-1,  -1] ],           #   Adobe Photoshop
-    ".psf":                       [ 0xE7B8,   [33,  -1], [248, -1, "3"] ],      #   Photoshop Proof Settings File
-    ".pdf":                       [ 0xF1C1,   [203, -1], [-1,  -1] ],           #   Adobe PDF
-    ".chm":                       [ 0xFB24,   [229, -1], [-1,  -1, "3"] ],      # ﬤ  Help file
-    ".class":                     [ 0xE256,   [68,  -1], [253, -1] ],           #   Java bytecode
-    ".diff":                      [ 0xF457,   [120, -1], [210, -1, "3"] ],      # 
-    ".patch":                     [ 0xF457,   [120, -1], [210, -1, "3"] ],      # 
-    ".djvu":                      [ 0xF0C6,   [141, -1], [-1,  -1] ],           #   DjVu
-    ".epub":                      [ 0xE28B,   [210, -1], [230, -1] ],           #   Ebook
-    ".mobi":                      [ 0xE28B,   [210, -1], [230, -1] ],           #   Ebook
-    ".gbr":                       [ 0xF5E2,   [240, -1, "3"], [253, -1] ],      #   GIMP
-    ".scm":                       [ 0xF5E2,   [240, -1, "3"], [253, -1] ],      #   GIMP
-    ".ics":                       [ 0xF073,   [203, -1], [-1,  -1] ],           #   Calendar file
-    ".md5":                       [ 0xF00C,   [116, -1], [-1,  -1] ],           #   Checksum file
-    ".sfv":                       [ 0xF00C,   [116, -1], [-1,  -1] ],           #   Checksum file
-    ".mo":                        [ 0xF1AB,   [86,  -1] ],                      #   Translation file
-    ".po":                        [ 0xF1AB,   [86,  -1] ],                      #   Translation file
-    ".pot":                       [ 0xF1AB,   [86,  -1] ],                      #   Translation file
-    ".msg":                       [ 0xF6ED,   [220, -1], [-1,  -1] ],           #   Email file
-    ".pcb":                       [ 0xF493,   [65,  -1], [-1,  -1] ],           #   Printed Circuit Board Design File
-    ".rdata":                     [ 0xFCD2,   [32,  -1], [248, -1, "3"] ],      # ﳒ  R, workspace data
-    ".rproj":                     [ 0xFCD2,   [32,  -1], [248, -1, "3"] ],      # ﳒ  RStudio project file
-    ".rdf":                       [ 0xE212,   [116, -1] ],                      #   Resource Description Framework
-    ".spl":                       [ 0xF02F,   [101, -1] ],                      #   Printer spool file
-    ".srt":                       [ 0xF867,   [186, -1], [-1, -1] ],            #   Subtitles
-    ".sub":                       [ 0xF867,   [186, -1], [-1, -1] ],            #   Subtitles
-    ".idx":                       [ 0xF867,   [186, -1], [-1, -1] ],            #   Subtitles
-    ".torrent":                   [ 0xF019,   [116, -1], [-1, -1] ],            # 
-    ".zsh-theme":                 [ 0xF489,   [67, -1] ],                       #   Shell
+    ".ai":                        [ 0xE7B4,   [208, -1], [-1,  -1] ],            #   Adobe Illustrator
+    ".fla":                       [ 0xF0E7,   [203, -1], [-1,  -1] ],            #   Adobe Flash
+    ".psd":                       [ 0xE7B8,   [33,  -1], [-1,  -1] ],            #   Adobe Photoshop
+    ".psf":                       [ 0xE7B8,   [33,  -1], [248, -1, "3"] ],       #   Photoshop Proof Settings File
+    ".pdf":                       [ 0xF1C1,   [203, -1], [-1,  -1] ],            #   Adobe PDF
+    ".chm":                       [ 0xFB24,   [229, -1], [-1,  -1, "3"] ],       # ﬤ  Help file
+    ".class":                     [ 0xE256,   [68,  -1], [253, -1] ],            #   Java bytecode
+    ".diff":                      [ 0xF457,   [120, -1], [210, -1, "3"] ],       # 
+    ".patch":                     [ 0xF457,   [120, -1], [210, -1, "3"] ],       # 
+    ".djvu":                      [ 0xF0C6,   [141, -1], [-1,  -1] ],            #   DjVu
+    ".epub":                      [ 0xE28B,   [210, -1], [230, -1] ],            #   Ebook
+    ".mobi":                      [ 0xE28B,   [210, -1], [230, -1] ],            #   Ebook
+    ".gbr":                       [ 0xF5E2,   [240, -1, "3"], [253, -1] ],       #   GIMP
+    ".scm":                       [ 0xF5E2,   [240, -1, "3"], [253, -1] ],       #   GIMP
+    ".ics":                       [ 0xF073,   [203, -1], [-1,  -1] ],            #   Calendar file
+    ".md5":                       [ 0xF00C,   [116, -1], [-1,  -1] ],            #   Checksum file
+    ".sfv":                       [ 0xF00C,   [116, -1], [-1,  -1] ],            #   Checksum file
+    ".mo":                        [ 0xF1AB,   [86,  -1] ],                       #   Translation file
+    ".po":                        [ 0xF1AB,   [86,  -1] ],                       #   Translation file
+    ".pot":                       [ 0xF1AB,   [86,  -1] ],                       #   Translation file
+    ".msg":                       [ 0xF6ED,   [220, -1], [-1,  -1] ],            #   Email file
+    ".pcb":                       [ 0xF493,   [65,  -1], [-1,  -1] ],            #   Printed Circuit Board Design File
+    ".rdata":                     [ 0xFCD2,   [32,  -1], [248, -1, "3"] ],       # ﳒ  R, workspace data
+    ".rproj":                     [ 0xFCD2,   [32,  -1], [248, -1, "3"] ],       # ﳒ  RStudio project file
+    ".rdf":                       [ 0xE212,   [116, -1] ],                       #   Resource Description Framework
+    ".spl":                       [ 0xF02F,   [101, -1] ],                       #   Printer spool file
+    ".srt":                       [ 0xF867,   [186, -1], [-1, -1] ],             #   Subtitles
+    ".sub":                       [ 0xF867,   [186, -1], [-1, -1] ],             #   Subtitles
+    ".idx":                       [ 0xF867,   [186, -1], [-1, -1] ],             #   Subtitles
+    ".torrent":                   [ 0xF019,   [116, -1], [-1, -1] ],             # 
+    ".zsh-theme":                 [ 0xF489,   [67, -1] ],                        #   Shell
 
     # "Unimportant" (text)
-    ".bash_history":              [ 0xF489,   [240, -1, "3"] ],                 #   Shell
-    ".bash_logout":               [ 0xF489,   [240, -1, "3"] ],                 #   Shell
-    ".zsh_history":               [ 0xF489,   [240, -1, "3"] ],                 #   Shell
-    ".gitkeep":                   [ 0xF1F8,   [240, -1, "3"] ],                 # 
-    ".log":                       [ 0xF0F6,   [240, -1, "3"] ],                 # 
-    ".pid":                       [ 0xF0F6,   [240, -1, "3"] ],                 # 
-    ".python_history":            [ 0xE606,   [240, -1, "3"] ],                 #   Python
-    ".sudo_as_admin_successful":  [ 0xF0F6,   [240, -1, "3"] ],                 # 
-    ".wget-hsts":                 [ 0xF0F6,   [240, -1, "3"] ],                 # 
+    ".bash_history":              [ 0xF489,   [240, -1, "3"] ],                  #   Shell
+    ".bash_logout":               [ 0xF489,   [240, -1, "3"] ],                  #   Shell
+    ".zsh_history":               [ 0xF489,   [240, -1, "3"] ],                  #   Shell
+    ".gitkeep":                   [ 0xF1F8,   [240, -1, "3"] ],                  # 
+    ".log":                       [ 0xF0F6,   [240, -1, "3"] ],                  # 
+    ".pid":                       [ 0xF0F6,   [240, -1, "3"] ],                  # 
+    ".python_history":            [ 0xE606,   [240, -1, "3"] ],                  #   Python
+    ".sudo_as_admin_successful":  [ 0xF0F6,   [240, -1, "3"] ],                  # 
+    ".wget-hsts":                 [ 0xF0F6,   [240, -1, "3"] ],                  # 
 
     # "Unimportant" (undo)
-    ".orig":                      [ 0xF0E2,   [240, -1, "3"] ],                 # 
-    ".pacnew":                    [ 0xF0E2,   [240, -1, "3"] ],                 # 
-    ".un~":                       [ 0xF0E2,   [240, -1, "3"] ],                 # 
+    ".orig":                      [ 0xF0E2,   [240, -1, "3"] ],                  # 
+    ".pacnew":                    [ 0xF0E2,   [240, -1, "3"] ],                  # 
+    ".un~":                       [ 0xF0E2,   [240, -1, "3"] ],                  # 
 
     # "Unimportant" (backups)
-    ".bak":                       [ 0xF0E2,   [240, -1, "3"] ],                 # 
-    ".bup":                       [ 0xF0E2,   [240, -1, "3"] ],                 # 
-    ".old":                       [ 0xF0E2,   [240, -1, "3"] ],                 # 
+    ".bak":                       [ 0xF0E2,   [240, -1, "3"] ],                  # 
+    ".bup":                       [ 0xF0E2,   [240, -1, "3"] ],                  # 
+    ".old":                       [ 0xF0E2,   [240, -1, "3"] ],                  # 
 
     # "Unimportant" (build_artifacts)
-    ".aux":                       [ 0xF1F8,   [240, -1, "3"] ],                 #   LaTex
-    ".bbl":                       [ 0xF1F8,   [240, -1, "3"] ],                 #   LaTex
-    ".bcf":                       [ 0xF1F8,   [240, -1, "3"] ],                 #   LaTex
-    ".blg":                       [ 0xF1F8,   [240, -1, "3"] ],                 #   LaTex
-    ".dyn_hi":                    [ 0xF1F8,   [240, -1, "3"] ],                 #   haskell
-    ".dyn_o":                     [ 0xF1F8,   [240, -1, "3"] ],                 #   haskell
-    ".fdb_LaTextmk":              [ 0xF1F8,   [240, -1, "3"] ],                 #   LaTex
-    ".fls":                       [ 0xF1F8,   [240, -1, "3"] ],                 #   LaTex
-    ".hi":                        [ 0xF1F8,   [240, -1, "3"] ],                 #   haskell
-    ".idx":                       [ 0xF1F8,   [240, -1, "3"] ],                 #   LaTex
-    ".ilg":                       [ 0xF1F8,   [240, -1, "3"] ],                 #   LaTex
-    ".ind":                       [ 0xF1F8,   [240, -1, "3"] ],                 #   LaTex
-    ".la":                        [ 0xF1F8,   [240, -1, "3"] ],                 #   C/C++
-    ".lo":                        [ 0xF1F8,   [240, -1, "3"] ],                 #   C/C++
-    ".o":                         [ 0xF1F8,   [240, -1, "3"] ],                 #   C/C++
-    ".in":                        [ 0xF060,   [240, -1, "3"] ],                 #   Input file
-    ".out":                       [ 0xF061,   [240, -1, "3"] ],                 #   Output file
-    ".pyc":                       [ 0xE606,   [240, -1, "3"] ],                 #   Python compiled file
-    "*__pycache__":               [ 0xE606,   [240, -1, "3"] ],                 #   Python compiled data
-    ".rlib":                      [ 0xF1F8,   [240, -1, "3"] ],                 #   Static Rust library
-    ".scons_opt":                 [ 0xF1F8,   [240, -1, "3"] ],                 #   scons
-    ".sconsign.dblite":           [ 0xF1F8,   [240, -1, "3"] ],                 #   scons
-    ".skip":                      [ 0xF0F7,   [240, -1, "3"] ],                 #   Automake
-    ".synctex.gz":                [ 0xF1F8,   [240, -1, "3"] ],                 #   LaTex
-    ".toc":                       [ 0xF1F8,   [240, -1, "3"] ],                 #   LaTex
+    ".aux":                       [ 0xF1F8,   [240, -1, "3"] ],                  #   LaTex
+    ".bbl":                       [ 0xF1F8,   [240, -1, "3"] ],                  #   LaTex
+    ".bcf":                       [ 0xF1F8,   [240, -1, "3"] ],                  #   LaTex
+    ".blg":                       [ 0xF1F8,   [240, -1, "3"] ],                  #   LaTex
+    ".dyn_hi":                    [ 0xF1F8,   [240, -1, "3"] ],                  #   haskell
+    ".dyn_o":                     [ 0xF1F8,   [240, -1, "3"] ],                  #   haskell
+    ".fdb_LaTextmk":              [ 0xF1F8,   [240, -1, "3"] ],                  #   LaTex
+    ".fls":                       [ 0xF1F8,   [240, -1, "3"] ],                  #   LaTex
+    ".hi":                        [ 0xF1F8,   [240, -1, "3"] ],                  #   haskell
+    ".idx":                       [ 0xF1F8,   [240, -1, "3"] ],                  #   LaTex
+    ".ilg":                       [ 0xF1F8,   [240, -1, "3"] ],                  #   LaTex
+    ".ind":                       [ 0xF1F8,   [240, -1, "3"] ],                  #   LaTex
+    ".la":                        [ 0xF1F8,   [240, -1, "3"] ],                  #   C/C++
+    ".lo":                        [ 0xF1F8,   [240, -1, "3"] ],                  #   C/C++
+    ".o":                         [ 0xF1F8,   [240, -1, "3"] ],                  #   C/C++
+    ".in":                        [ 0xF060,   [240, -1, "3"] ],                  #   Input file
+    ".out":                       [ 0xF061,   [240, -1, "3"] ],                  #   Output file
+    ".pyc":                       [ 0xE606,   [240, -1, "3"] ],                  #   Python compiled file
+    "*__pycache__":               [ 0xE606,   [240, -1, "3"] ],                  #   Python compiled data
+    ".rlib":                      [ 0xF1F8,   [240, -1, "3"] ],                  #   Static Rust library
+    ".scons_opt":                 [ 0xF1F8,   [240, -1, "3"] ],                  #   scons
+    ".sconsign.dblite":           [ 0xF1F8,   [240, -1, "3"] ],                  #   scons
+    ".skip":                      [ 0xF0F7,   [240, -1, "3"] ],                  #   Automake
+    ".synctex.gz":                [ 0xF1F8,   [240, -1, "3"] ],                  #   LaTex
+    ".toc":                       [ 0xF1F8,   [240, -1, "3"] ],                  #   LaTex
 
     # unimportant, macOS
-    ".CFUserTextEncoding":        [ 0xF179,   [240, -1, "3"] ],                 # 
-    ".DS_Store":                  [ 0xF179,   [240, -1, "3"] ],                 # 
-    ".localized":                 [ 0xF179,   [240, -1, "3"] ],                 # 
-    ".plist":                     [ 0xF179,   [240, -1, "3"] ],                 # 
+    ".CFUserTextEncoding":        [ 0xF179,   [240, -1, "3"] ],                  # 
+    ".DS_Store":                  [ 0xF179,   [240, -1, "3"] ],                  # 
+    ".localized":                 [ 0xF179,   [240, -1, "3"] ],                  # 
+    ".plist":                     [ 0xF179,   [240, -1, "3"] ],                  # 
 
     # "Unimportant" (other)
-    "*~":                         [ 0xF6A8,   [240, -1, "3"] ],                 # 
-    ".cache":                     [ 0xF6A8,   [240, -1, "3"] ],                 # 
-    ".dist":                      [ 0xF6A8,   [240, -1, "3"] ],                 # 
-    ".incomplete":                [ 0xF6A8,   [240, -1, "3"] ],                 # 
-    ".lock":                      [ 0xF023,   [240, -1, "3"] ],                 # 
-    "*lockfile":                  [ 0xF023,   [240, -1, "3"] ],                 # 
-    ".part":                      [ 0xF6A8,   [240, -1, "3"] ],                 # 
-    ".state":                     [ 0xF023,   [240, -1, "3"] ],                 # 
-    ".swo":                       [ 0xF250,   [240, -1, "3"] ],                 # 
-    ".swp":                       [ 0xF250,   [240, -1, "3"] ],                 # 
-    ".temp":                      [ 0xF250,   [240, -1, "3"] ],                 # 
-    ".tmp":                       [ 0xF250,   [240, -1, "3"] ],                 # 
-    ".sassc":                     [ 0xF250,   [240, -1, "3"] ],                 # 
+    "*~":                         [ 0xF6A8,   [240, -1, "3"] ],                  # 
+    ".cache":                     [ 0xF6A8,   [240, -1, "3"] ],                  # 
+    ".dist":                      [ 0xF6A8,   [240, -1, "3"] ],                  # 
+    ".incomplete":                [ 0xF6A8,   [240, -1, "3"] ],                  # 
+    ".lock":                      [ 0xF023,   [240, -1, "3"] ],                  # 
+    "*lockfile":                  [ 0xF023,   [240, -1, "3"] ],                  # 
+    ".part":                      [ 0xF6A8,   [240, -1, "3"] ],                  # 
+    ".state":                     [ 0xF023,   [240, -1, "3"] ],                  # 
+    ".swo":                       [ 0xF250,   [240, -1, "3"] ],                  # 
+    ".swp":                       [ 0xF250,   [240, -1, "3"] ],                  # 
+    ".temp":                      [ 0xF250,   [240, -1, "3"] ],                  # 
+    ".tmp":                       [ 0xF250,   [240, -1, "3"] ],                  # 
+    ".sassc":                     [ 0xF250,   [240, -1, "3"] ],                  # 
 
     # Xcode
-    ".xcconfig":                  [ "X",      [45,  -1], [248, -1, "3"] ],      # X
-    ".entitlements":              [ "X",      [45,  -1], [248, -1, "3"] ],      # X
-    ".strings":                   [ "X",      [45,  -1], [248, -1, "3"] ],      # X
-    ".storyboard":                [ "X",      [45,  -1], [248, -1, "3"] ],      # X
-    ".xcsettings":                [ "X",      [45,  -1], [248, -1, "3"] ],      # X
-    ".xib":                       [ "X",      [45,  -1], [248, -1, "3"] ],      # X
+    ".xcconfig":                  [ "X",      [45,  -1], [248, -1, "3"] ],       # X
+    ".entitlements":              [ "X",      [45,  -1], [248, -1, "3"] ],       # X
+    ".strings":                   [ "X",      [45,  -1], [248, -1, "3"] ],       # X
+    ".storyboard":                [ "X",      [45,  -1], [248, -1, "3"] ],       # X
+    ".xcsettings":                [ "X",      [45,  -1], [248, -1, "3"] ],       # X
+    ".xib":                       [ "X",      [45,  -1], [248, -1, "3"] ],       # X
 
     # Encryption files
-    ".3des":                      [ 0xF084,   [192, -1, "3"] ],                 # 
-    ".aes":                       [ 0xF084,   [192, -1, "3"] ],                 # 
-    ".asc":                       [ 0xF084,   [192, -1, "3"] ],                 # 
-    ".bfe":                       [ 0xF084,   [192, -1, "3"] ],                 # 
-    ".enc":                       [ 0xF084,   [192, -1, "3"] ],                 # 
-    ".gpg":                       [ 0xF084,   [192, -1, "3"] ],                 # 
-    ".p7s":                       [ 0xF084,   [192, -1, "3"] ],                 # 
-    ".p12":                       [ 0xF084,   [192, -1, "3"] ],                 # 
-    ".pem":                       [ 0xF084,   [192, -1, "3"] ],                 # 
-    ".pgp":                       [ 0xF084,   [192, -1, "3"] ],                 # 
-    ".sig":                       [ 0xF084,   [192, -1, "3"] ],                 # 
-    ".signature":                 [ 0xF084,   [192, -1, "3"] ],                 # 
-    "*id_dsa":                    [ 0xF084,   [192, -1, "3"] ],                 # 
-    "*id_rsa":                    [ 0xF084,   [192, -1, "3"] ],                 # 
-    "*id_ecdsa":                  [ 0xF084,   [192, -1, "3"] ],                 # 
-    "*id_ed25519":                [ 0xF084,   [192, -1, "3"] ],                 # 
+    ".3des":                      [ 0xF084,   [192, -1, "3"] ],                  # 
+    ".aes":                       [ 0xF084,   [192, -1, "3"] ],                  # 
+    ".asc":                       [ 0xF084,   [192, -1, "3"] ],                  # 
+    ".bfe":                       [ 0xF084,   [192, -1, "3"] ],                  # 
+    ".enc":                       [ 0xF084,   [192, -1, "3"] ],                  # 
+    ".gpg":                       [ 0xF084,   [192, -1, "3"] ],                  # 
+    ".p7s":                       [ 0xF084,   [192, -1, "3"] ],                  # 
+    ".p12":                       [ 0xF084,   [192, -1, "3"] ],                  # 
+    ".pem":                       [ 0xF084,   [192, -1, "3"] ],                  # 
+    ".pgp":                       [ 0xF084,   [192, -1, "3"] ],                  # 
+    ".sig":                       [ 0xF084,   [192, -1, "3"] ],                  # 
+    ".signature":                 [ 0xF084,   [192, -1, "3"] ],                  # 
+    "*id_dsa":                    [ 0xF084,   [192, -1, "3"] ],                  # 
+    "*id_rsa":                    [ 0xF084,   [192, -1, "3"] ],                  # 
+    "*id_ecdsa":                  [ 0xF084,   [192, -1, "3"] ],                  # 
+    "*id_ed25519":                [ 0xF084,   [192, -1, "3"] ],                  # 
 
     # Game files
-    ".32x":                       [ 0xF11B,   [212, -1] ],                      # 
-    ".a00":                       [ 0xF11B,   [212, -1] ],                      # 
-    ".a52":                       [ 0xF11B,   [212, -1] ],                      # 
-    ".a64":                       [ 0xF11B,   [212, -1] ],                      # 
-    ".A64":                       [ 0xF11B,   [212, -1] ],                      # 
-    ".a78":                       [ 0xF11B,   [212, -1] ],                      # 
-    ".adf":                       [ 0xF11B,   [212, -1] ],                      # 
-    ".atr":                       [ 0xF11B,   [212, -1] ],                      # 
-    ".cdi":                       [ 0xF11B,   [212, -1] ],                      # 
-    ".fm2":                       [ 0xF11B,   [212, -1] ],                      # 
-    ".gb":                        [ 0xF11B,   [212, -1] ],                      # 
-    ".gba":                       [ 0xF11B,   [212, -1] ],                      # 
-    ".gbc":                       [ 0xF11B,   [212, -1] ],                      # 
-    ".gel":                       [ 0xF11B,   [212, -1] ],                      # 
-    ".gg":                        [ 0xF11B,   [212, -1] ],                      # 
-    ".ggl":                       [ 0xF11B,   [212, -1] ],                      # 
-    ".ipk":                       [ 0xF11B,   [212, -1] ],                      # 
-    ".j64":                       [ 0xF11B,   [212, -1] ],                      # 
-    ".nds":                       [ 0xF11B,   [212, -1] ],                      # 
-    ".nes":                       [ 0xF11B,   [212, -1] ],                      # 
-    ".rom":                       [ 0xF11B,   [212, -1] ],                      # 
-    ".sav":                       [ 0xF11B,   [212, -1] ],                      # 
-    ".sms":                       [ 0xF11B,   [212, -1] ],                      # 
-    ".st":                        [ 0xF11B,   [212, -1] ],                      # 
-    ".pgn":                       [ 0xE25F,   [212, -1] ],                      #  Chess game file
+    ".32x":                       [ 0xF11B,   [212, -1] ],                       # 
+    ".a00":                       [ 0xF11B,   [212, -1] ],                       # 
+    ".a52":                       [ 0xF11B,   [212, -1] ],                       # 
+    ".a64":                       [ 0xF11B,   [212, -1] ],                       # 
+    ".A64":                       [ 0xF11B,   [212, -1] ],                       # 
+    ".a78":                       [ 0xF11B,   [212, -1] ],                       # 
+    ".adf":                       [ 0xF11B,   [212, -1] ],                       # 
+    ".atr":                       [ 0xF11B,   [212, -1] ],                       # 
+    ".cdi":                       [ 0xF11B,   [212, -1] ],                       # 
+    ".fm2":                       [ 0xF11B,   [212, -1] ],                       # 
+    ".gb":                        [ 0xF11B,   [212, -1] ],                       # 
+    ".gba":                       [ 0xF11B,   [212, -1] ],                       # 
+    ".gbc":                       [ 0xF11B,   [212, -1] ],                       # 
+    ".gel":                       [ 0xF11B,   [212, -1] ],                       # 
+    ".gg":                        [ 0xF11B,   [212, -1] ],                       # 
+    ".ggl":                       [ 0xF11B,   [212, -1] ],                       # 
+    ".ipk":                       [ 0xF11B,   [212, -1] ],                       # 
+    ".j64":                       [ 0xF11B,   [212, -1] ],                       # 
+    ".nds":                       [ 0xF11B,   [212, -1] ],                       # 
+    ".nes":                       [ 0xF11B,   [212, -1] ],                       # 
+    ".rom":                       [ 0xF11B,   [212, -1] ],                       # 
+    ".sav":                       [ 0xF11B,   [212, -1] ],                       # 
+    ".sms":                       [ 0xF11B,   [212, -1] ],                       # 
+    ".st":                        [ 0xF11B,   [212, -1] ],                       # 
+    ".pgn":                       [ 0xE25F,   [212, -1] ],                       #  Chess game file
   }
 
   return FORMAT_COLORS, SPECIAL, EXTENSION_LIST
