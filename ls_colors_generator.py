@@ -1310,7 +1310,8 @@ if __name__ == "__main__":
   opts = []
   extra_space = False
   override = False
-  run_test = False
+  print_test = False
+  make_dir = False
   path = os.path.abspath(__file__)
   user_home = os.path.expanduser("~")
   cache_dir = user_home + "/.cache/even-better-ls/"
@@ -1319,14 +1320,16 @@ if __name__ == "__main__":
 
   # Options
   try:
-    opts, args = getopt.getopt(sys.argv[1:], "o:etn", ["override=", "extra-space", "test", "no-icon"])
+    opts, args = getopt.getopt(sys.argv[1:], "o:etdn", ["override=", "extra-space", "test", "example-dir", "no-icon"])
   except getopt.GetoptError:
     pass
 
   # Handle options
   for opt, arg in opts:
     if opt in ("-t", "--test"): # Test extensions
-      run_test = True
+      print_test = True
+    if opt in ("-d", "--example-dir"): # Test extensions
+      make_dir = True
     if opt in ("-o", "--override"): # Override icon and colors
       if os.path.isfile(arg):
         override = arg
@@ -1345,7 +1348,7 @@ if __name__ == "__main__":
   # Attempt to load cache first
   cache_hash = get_hash(path, str(override), (str(extra_space) + str(no_icons)) )
   cache = get_cache(cache_hash, path, override, cache_dir)
-  if (cache):
+  if (cache and not print_test and not make_dir):
     try:
       sys.stdout.buffer.write(cache) # Python 3
     except:
@@ -1378,9 +1381,76 @@ if __name__ == "__main__":
   special = translate(special)
   exten = translate(exten)
 
-  if run_test: # Generate a test directory with all file extensions
+  if make_dir:
+    # Generate a test directory with all file extensions
     os.system("mkdir -p ebls-ext-test")
     os.system("touch " + " ".join("ebls-ext-test/" + ext for ext in exten.keys()))
+    sys.exit()
+
+  if print_test:
+    # Print examples of all extensions and special files
+    try:
+      rows, columns = os.popen('stty size', 'r').read().split()
+    except:
+      columns = 0
+    test_str = ""
+    spc = {
+      "bd": "block device",
+      "ca": "file with capability",
+      "cd": "character device",
+      "di": "directory",
+      "do": "door",
+      "ex": "executable file",
+      "fi": "regular file",
+      "ln": "symbolic link",
+      "mh": "multi-hardlink",
+      "mi": "missing file",
+      "no": "normal text",
+      "or": "orphan symlink",
+      "ow": "other-writable directory",
+      "pi": "named pipe (FIFO)",
+      "sg": "set-group-ID",
+      "so": "socket",
+      "st": "sticky directory",
+      "su": "set-user-ID",
+      "tw": "sticky and other-writable directory"
+    }
+    # Add special files
+    for k, v in special.items():
+      name = k
+      if k in spc:
+        name = spc[k]
+      test_str += "\x1b[%sm%s\x1b[m\n" % (v, name)
+
+    # Group extensions by their formatting
+    group = {}
+    for k, v in exten.items():
+      if v not in group:
+        group[v] = []
+      group[v].append(k)
+
+    # Add extensions
+    for k, v in group.items():
+      count = 0
+      for i in v:
+        c = "\x1b[%sm%s\x1b[m  " % (k, i)
+        i_len = len(i) + 4
+        if extra_space:
+          i_len += 1
+        if count + i_len >= int(columns) - 1:
+          test_str += "\n"
+          count = i_len
+        else:
+          count += i_len
+        test_str += c
+      test_str += "\n"
+
+    test_str = test_str.encode("utf-8")
+    try:
+      sys.stdout.buffer.write(test_str) # Python 3
+    except:
+      print(test_str) # Python 2
+
     sys.exit()
 
   # Format left/right/exit/reset color codes.
@@ -1412,4 +1482,3 @@ if __name__ == "__main__":
     sys.stdout.buffer.write(output) # Python 3
   except:
     print(output) # Python 2
-

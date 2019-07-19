@@ -11,7 +11,7 @@ Works by installing modified versions of `ls`, `dir` and `vdir`, and customizing
 - Wide set of file extensions covered
 - Supports 256 color palette as well as 24-bit color (16+ million colors)
 - Wide variety of character glyphs from [nerd-fonts](http://www.github.com/ryanoasis/nerd-fonts) (install separately)
-- Override colors on a per-user basis.
+- Override colors with external config files.
 
 ## Installation
 
@@ -161,8 +161,14 @@ DIRECTORY:  "38;2;255;255;255;48;2;0;0;255",
 
 ## Testing
 
-You can test current colors and icons with the `-t` or `--test` option. This will create a folder named `ebls-ext-test` in the current directory, with examples of all defined file extensions.
+You can test current colors and icons with the `-t` or `--test` option to print examples of all defined extensions as well as special files.
 
 ```
 $ ls_colors_generator --test
+```
+
+Alternatively, you can use the `-d` or `--example-dir` option to create a folder named `ebls-ext-test` in the current directory, filed with example files of all defined file extensions.
+
+```
+$ ls_colors_generator --example-dir
 ```
