@@ -1,6 +1,6 @@
 # even-better-ls
 
-![visual depiction of even-better-ls](https://i.imgur.com/rNFjt5t.png)
+![visual depiction of even-better-ls](https://i.imgur.com/3MoL8qw.png)
 
 ## Features
 
@@ -16,13 +16,13 @@ Works by installing modified versions of `ls`, `dir` and `vdir`, and customizing
 ## Installation
 
 If you are using a Python version less than 3, you may have to install `PyYAML`.
-```
+```bash
 $ pip install pyyaml
 ```
 
 To install _even-better-ls_, clone this repository and run the installation script:
 
-```
+```bash
 $ git clone git@github.com:shiftydev/even-better-ls.git && cd even-better-ls && ./install.sh
 ```
 
@@ -120,6 +120,7 @@ Just like colors you can set different values for icon and filename. Example wit
 ```
 
 Corresponding values:
+
 - `1`: lighter/bold
 - `2`: darker
 - `3`: italic
@@ -163,12 +164,12 @@ DIRECTORY:  "38;2;255;255;255;48;2;0;0;255",
 
 You can test current colors and icons with the `-t` or `--test` option to print examples of all defined extensions as well as special files.
 
-```
+```bash
 $ ls_colors_generator --test
 ```
 
 Alternatively, you can use the `-d` or `--example-dir` option to create a folder named `ebls-ext-test` in the current directory, filed with example files of all defined file extensions.
 
-```
+```bash
 $ ls_colors_generator --example-dir
 ```
