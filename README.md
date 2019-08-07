@@ -72,7 +72,7 @@ $ ./install.sh --script-only && LS_COLORS=$(ls_colors_generator)
 Be aware that _even-better-ls_ does not work well with `zsh`'s tab completion. One simple workaround is to use the `-n` or `--no-icon` option to output color data _without icons_ and set the resulting output to be used for completion. This will allow you to at least retain the colors defined in the script.
 
 ```bash
-zstyle ':completion:*:default' list-colors ${(s.:.)$(ls_colors_generator -n)}
+zstyle ':completion:*' list-colors "${(@s.:.)$(ls_colors_generator -n)}"
 ```
 
 ## Customization
